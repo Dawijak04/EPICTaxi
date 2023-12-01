@@ -1,0 +1,15 @@
+Regular,151-C-935,Honda,Accord,John
+Regular,211-L-205,Mitsubishi,Outlander,Adam
+Premium,232-D-42,Mercedes,CLS,Jeffrey
+Regular,12-RN-831,Toyota,Prius,Alex
+Premium,221-LS-98,Audi,A8,Dylan
+Regular,142-D-6559,Renault,Megane,Aran
+WheelchairAccesible,152-OY-749,Volskwagen,Caddy,Jake
+WheelchairAccesible,181-MN-852,Citroen,Berlingo,Mike
+Premium,211-LS-560,BMW,7 Series,Patrick
+Regular,161-D-23509,Mazda,6,Harvey
+Regular,12-SO-9563,Skoda,Superb,Harry
+Regular,172-KE-469,Kia,Sorento,Charlie
+Regular,201-TN-263,Nissan,Quashqai,James
+WheelchairAccesible,182-KY-858,Renault,Kangoo,Ryan
+Regular,212-WX-384,Ford,Mondeo,Brian
