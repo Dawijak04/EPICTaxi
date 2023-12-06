@@ -6,7 +6,7 @@ public class UserInterface {
     private static Type type;
     private static int numberPassengers = 5;
     private static int category = 4;
-    private static int rating = 6;
+    private static double rating = 6;
 
     public static void welcome(){
         System.out.println("Welcome to EcoTaxi");
@@ -59,11 +59,12 @@ public class UserInterface {
         System.out.println("The fare for this ride was: ");
         System.out.println("Please give your driver a rating between 1 and 5");
         while (rating < 1 || rating > 5) {
-            rating = scan.nextInt();
+            rating = scan.nextDouble();
             if (rating < 1 || rating > 5) {
                 System.out.println("Invalid input, please try again");
             }
         }
+        CSVFileReading.updateRating();
         System.out.println("Thank you for choosing EcoTaxi");
         scan.close();
     }
@@ -98,5 +99,13 @@ public class UserInterface {
 
     public static void setNumberPassengers(int Passengers) {
         numberPassengers = Passengers;
+    }
+
+    public static String getRating() {
+        return String.valueOf(rating);
+    }
+
+    public static void setRating(int rating) {
+        UserInterface.rating = rating;
     }
 }
