@@ -11,7 +11,9 @@ public class Taxi {
     private boolean available;
     private int pointX;
     private int pointY;
-    public Taxi(Type type, String reg, String make, String model, String driverName) {
+    private double rating;
+    private int noOfTrips;
+    public Taxi(Type type, String reg, String make, String model, String driverName, double rating, int noOfTrips) {
         this.type = type;
         this.reg = reg;
         this.make = make;
@@ -20,6 +22,8 @@ public class Taxi {
         this.available = available;
         this.pointX = pointX;
         this.pointY = pointY;
+        this.rating = rating;
+        this.noOfTrips = noOfTrips;
     }
 
     public static void randomTaxiGenerate(Type type) {
@@ -37,6 +41,8 @@ public class Taxi {
             }
         }
     }
+
+
 
     public Type getType() {
         return type;
@@ -93,4 +99,20 @@ public class Taxi {
     public int getPointY() {return pointY;}
 
     public void setPointY(int pointY) {this.pointY = pointY;}
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public int getNoOfTrips() {
+        return noOfTrips;
+    }
+
+    public void setNoOfTrips(int noOfTrips) {
+        this.noOfTrips = noOfTrips;
+    }
 }

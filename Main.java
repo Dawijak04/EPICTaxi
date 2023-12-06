@@ -3,7 +3,8 @@ package org.example;
 
 public class Main {
     public static void main(String[] args) {
-        //CSVFileReading.readTaxiCSV();
+        CSVFileReading.readTaxiCSV();
+
 
         //UserInterface.welcome();
         //UserInterface.routeInfo();
@@ -20,8 +21,12 @@ public class Main {
         //System.out.println(CSVFileReading.getTaxis().get(9).isAvailable());
         //System.out.println(CSVFileReading.getTaxis().get(9).getPointX());
         //System.out.println(CSVFileReading.getTaxis().get(9).getPointY());
+        UserInterface.endMessage();
 
 
+    }
+    public static int add(int a, int b){
+        return a + b;
     }
 
 }

@@ -6,14 +6,16 @@ public class UserInterface {
     private static Type type;
     private static int numberPassengers = 5;
     private static int category = 4;
+    private static double rating = 6;
+
     public static void welcome(){
         System.out.println("Welcome to EcoTaxi");
         System.out.println("Every trip you take, will plant a tree to save the planet");
     }
 
     public static void routeInfo(){
-        Scanner scan = new Scanner(System.in);
 
+        Scanner scan = new Scanner(System.in);
         System.out.println("Where would you like to go? Please input co-ordinates");
         System.out.println("X:");
         setLocX(scan.nextInt());
@@ -49,6 +51,22 @@ public class UserInterface {
                 System.out.println("The limit for each vehicle is 4 passengers, please try again");
             }
         }
+        scan.close();
+    }
+
+    public static void endMessage() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("The fare for this ride was: ");
+        System.out.println("Please give your driver a rating between 1 and 5");
+        while (rating < 1 || rating > 5) {
+            rating = scan.nextDouble();
+            if (rating < 1 || rating > 5) {
+                System.out.println("Invalid input, please try again");
+            }
+        }
+        CSVFileReading.updateRating();
+        System.out.println("Thank you for choosing EcoTaxi");
+        scan.close();
     }
 
     public static int getLocX() {
@@ -81,5 +99,13 @@ public class UserInterface {
 
     public static void setNumberPassengers(int Passengers) {
         numberPassengers = Passengers;
+    }
+
+    public static String getRating() {
+        return String.valueOf(rating);
+    }
+
+    public static void setRating(int rating) {
+        UserInterface.rating = rating;
     }
 }
