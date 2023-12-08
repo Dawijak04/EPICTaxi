@@ -3,7 +3,7 @@ package org.example;
 
 public class Main {
     public static void main(String[] args) {
-        CSVFileReading.readTaxiCSV();
+       // CSVFileReading.readTaxiCSV();
 
 
         //UserInterface.welcome();
@@ -21,8 +21,10 @@ public class Main {
         //System.out.println(CSVFileReading.getTaxis().get(9).isAvailable());
         //System.out.println(CSVFileReading.getTaxis().get(9).getPointX());
         //System.out.println(CSVFileReading.getTaxis().get(9).getPointY());
-        UserInterface.endMessage();
+       // UserInterface.endMessage();
 
+        LinkedGrid lg = new LinkedGrid(10);
+        lg.display();;
 
     }
     public static int add(int a, int b){
