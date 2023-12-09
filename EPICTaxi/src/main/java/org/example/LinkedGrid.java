@@ -52,11 +52,11 @@ public class LinkedGrid {
         markNodesAsEmpty();
 
         //intialising the person with random coordiantes
-        // this.person = new Person(10);
-        //  int personX = this.person.getLocX();
-        //int personY = this.person.getLocY();
+         this.person = new Person(10);
+         int personX = this.person.getLocX();
+        int personY = this.person.getLocY();
 
-        // getNodeAt(personX, personY).setEmpty(false);
+        getNodeAt(personX, personY).setEmpty(false);
 
     }
     private Node getNodeAt(int x, int y){
@@ -134,16 +134,15 @@ public class LinkedGrid {
 
                     if(isRiver(x, y)){
                         System.out.print("\u001B[34m ~ \u001B[0m"); // ANSI escape codes to make it blue
-                    }else{
+                    }else if(x == person.getLocX() && y == person.getLocY()){
+                        System.out.print("\uD83E\uDDCD"); // unicode for a peron emoji
+                    }
+                    else{
                         System.out.printf("%3d", temp.getData()); //spaces out all parts of grid so all nodes are aligned
                     }}
                 temp = temp.getRight();
 
             }
-            // int personX = person.getLocX();
-            //  int personY = person.getLocY();
-            // getNodeAt(personX, personY).setEmpty(false);
-
 
             System.out.println();
             temp = rowMarker.getDown();
