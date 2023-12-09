@@ -10,13 +10,18 @@ public class Person {
    private static Taxi assignedTaxi = CSVFileReading.getTaxis().get(15);
     private static String assignedTaxiReg = assignedTaxi.getReg();
 
-    public Person(int gridDimension){
+    public Person(){
         Random rand = new Random();
+<<<<<<< HEAD
         this.locX = rand.nextInt(gridDimension);
         this.locY = rand.nextInt(gridDimension);
         this.locX = Math.min(Math.max(this.locX, 0), gridDimension - 1);
         this.locY = Math.max(Math.min(this.locY, 0), gridDimension - 1);
 
+=======
+        this.locX = rand.nextInt(10);
+        this.locY = rand.nextInt(10);
+>>>>>>> 74e17b92c6502b78bba691d3e5221b274e26d11b
     }
 
     public int getLocX() {
