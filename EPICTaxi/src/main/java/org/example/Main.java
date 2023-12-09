@@ -3,7 +3,7 @@ package org.example;
 
 public class Main {
     public static void main(String[] args) {
-       // CSVFileReading.readTaxiCSV();
+          CSVFileReading.readTaxiCSV();
 
 
         //UserInterface.welcome();
@@ -24,11 +24,11 @@ public class Main {
        // UserInterface.endMessage();
 
         LinkedGrid lg = new LinkedGrid(10);
-        lg.display();;
+        lg.display();
 
     }
-    public static int add(int a, int b){
-        return a + b;
-    }
+  //  public static int add(int a, int b){
+     //   return a + b;
+    //}
 
 }
