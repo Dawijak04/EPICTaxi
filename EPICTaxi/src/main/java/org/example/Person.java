@@ -7,7 +7,7 @@ public class Person {
     private int locX;
     private int locY;
 
-   private static Taxi assignedTaxi = CSVFileReading.getTaxis().get(16);
+   private static Taxi assignedTaxi = CSVFileReading.getTaxis().get(15);
     private static String assignedTaxiReg = assignedTaxi.getReg();
 
     public Person(int gridDimension){

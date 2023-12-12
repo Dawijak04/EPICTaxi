@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CSVFileReading {
-    static String csvPath = "D:\\EPICTaxi\\src\\TaxiFile.txt";
+    static String csvPath = "/Users/alisiakazimierek/MyRepos/EPICTaxi/EPICTaxi/src/TaxiFile.txt";
     static String tempCsvPath = "D:\\EPICTaxi\\src\\TempFile.txt";
 
     private static List<Taxi> Taxis = new ArrayList<>();
@@ -53,8 +53,9 @@ public class CSVFileReading {
                 IOException e) {
             //e.printStackTrace();
             System.out.println("File not found");
+            System.out.println(Taxis.get(11).getDriverName());
         }
-        System.out.println(Taxis.get(11).getDriverName());
+
     }
     public static void updateRating() {
         List<String> updatedLines = new ArrayList<>();
