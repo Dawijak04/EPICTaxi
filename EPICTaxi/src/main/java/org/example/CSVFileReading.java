@@ -54,13 +54,11 @@ public class CSVFileReading {
                 IOException e) {
             //e.printStackTrace();
             System.out.println("File not found");
-            System.out.println(Taxis.get(11).getDriverName());
+            System.out.println(taxiList.get(11).getDriverName());
         }
-<<<<<<< HEAD
 
-=======
         System.out.println(taxiList.get(11).getDriverName());
->>>>>>> 8583861f59138e5e4451b29ad8ce8cb63be7bb8e
+
     }
     public static void updateRating() {
         List<String> updatedLines = new ArrayList<>();

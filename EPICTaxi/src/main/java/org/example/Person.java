@@ -39,24 +39,20 @@ public class Person {
         this.locY = locY;
     }
 
-<<<<<<< HEAD
+
     public static String getAssignedTaxiReg() {return assignedTaxiReg;}
-=======
-   public static String getAssignedTaxiReg() {return assignedTaxiReg;}
+
 
    public static void setAssignedTaxiReg(String reg) {
        assignedTaxiReg = reg;
     }
->>>>>>> dba7dc86a69088aa87b2e99083732c99af2e8dac
+
 
    public static Taxi getAssignedTaxi() {
        return assignedTaxi;
    }
 
-<<<<<<< HEAD
-    public static Taxi getAssignedTaxi() {
-        return assignedTaxi;
-    }
+
 
     public static void setAssignedTaxi(Taxi assignedTaxi) {
         Person.assignedTaxi = assignedTaxi;
@@ -94,9 +90,6 @@ public class Person {
         rating = r;
     }
 }
-=======
-   public static void setAssignedTaxi(Taxi assignedTaxi) {
-       Person.assignedTaxi = assignedTaxi;
-   }
-}
->>>>>>> dba7dc86a69088aa87b2e99083732c99af2e8dac
+
+
+
