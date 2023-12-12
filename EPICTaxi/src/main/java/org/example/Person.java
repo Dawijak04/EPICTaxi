@@ -1,4 +1,4 @@
-package org.example;
+package main.java.org.example;
 import java.util.Random;
 
 
@@ -11,7 +11,7 @@ public class Person {
     private static int category = 4;
     private static double rating = 6;
 
-   private static Taxi assignedTaxi = CSVFileReading.getTaxis().get(16);
+   private static Taxi assignedTaxi = CSVFileReading.getTaxis().get(14);
     private static String assignedTaxiReg = assignedTaxi.getReg();
 
     public Person(int gridDimension){
@@ -39,21 +39,16 @@ public class Person {
         this.locY = locY;
     }
 
-<<<<<<< HEAD
-    public static String getAssignedTaxiReg() {return assignedTaxiReg;}
-=======
-   public static String getAssignedTaxiReg() {return assignedTaxiReg;}
+
 
    public static void setAssignedTaxiReg(String reg) {
        assignedTaxiReg = reg;
     }
->>>>>>> dba7dc86a69088aa87b2e99083732c99af2e8dac
 
-   public static Taxi getAssignedTaxi() {
-       return assignedTaxi;
-   }
 
-<<<<<<< HEAD
+
+
+
     public static Taxi getAssignedTaxi() {
         return assignedTaxi;
     }
@@ -94,9 +89,7 @@ public class Person {
         rating = r;
     }
 }
-=======
-   public static void setAssignedTaxi(Taxi assignedTaxi) {
-       Person.assignedTaxi = assignedTaxi;
-   }
-}
->>>>>>> dba7dc86a69088aa87b2e99083732c99af2e8dac
+
+
+
+

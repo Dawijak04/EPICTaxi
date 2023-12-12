@@ -1,4 +1,4 @@
-package org.example;
+package main.java.org.example;
 
 
 import java.util.List;
@@ -22,9 +22,9 @@ public class Main {
         System.out.println("Driver name: " + Person.getAssignedTaxi().getDriverName());
         System.out.println("Availability: " + Person.getAssignedTaxi().isAvailable());
 
-<<<<<<< HEAD
+
         UserInterface.endMessage();
-=======
+
         //Taxi.randomTaxiGenerate(UserInterface.getType());
         //System.out.println(CSVFileReading.getTaxis().get(7).isAvailable());
         //System.out.println(CSVFileReading.getTaxis().get(7).getPointX());
@@ -49,7 +49,7 @@ public class Main {
       //  Node endNode = linkedGrid.getNodeAt(9, 5);
 
        // List<Node> shortestPath = linkedGrid.dijkstraShortestPath(startNode, endNode);
->>>>>>> dba7dc86a69088aa87b2e99083732c99af2e8dac
+
 
 
 
@@ -78,9 +78,11 @@ public class Main {
 
 
     }
-  //  public static int add(int a, int b){
-     //   return a + b;
-    //}
+
+
+    public static int add(int a, int b) {
+        return a + b;
+    }
 
 
 }

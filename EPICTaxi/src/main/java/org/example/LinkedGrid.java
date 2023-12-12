@@ -1,4 +1,4 @@
-package org.example;
+package main.java.org.example;
 import java.util.ArrayList;
         import java.util.Collections;
         import java.util.Comparator;
@@ -222,12 +222,10 @@ public class LinkedGrid {
         return first;
     }
 
-<<<<<<< HEAD
-=======
 
-
-}
->>>>>>> dba7dc86a69088aa87b2e99083732c99af2e8dac
 
 
 }
+
+
+

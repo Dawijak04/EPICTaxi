@@ -1,4 +1,5 @@
-package org.example;
+package main.java.org.example;
+
 import java.util.Scanner;
 public class UserInterface {
     private static int locX;
@@ -41,6 +42,7 @@ public class UserInterface {
             if (Person.getCategory() > 3 || Person.getCategory() < 1) {
                 System.out.println("Invalid input");
                 System.out.println("Please try again");
+
             }
         }
 
