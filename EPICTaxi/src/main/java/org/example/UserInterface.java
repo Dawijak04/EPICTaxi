@@ -22,45 +22,45 @@ public class UserInterface {
         System.out.println("Y:");
         setLocY(scan.nextInt());
 
-        while(category > 3 || category < 1) {
+        while(Person.getCategory() > 3 || Person.getCategory() < 1) {
             System.out.println("Which type of vehicle do you require? Enter number");
             System.out.println("1. Regular");
             System.out.println("2. Premium");
             System.out.println("3. Wheelchair Accessible");
-            category = scan.nextInt();
-            switch (category) {
+            Person.setCategory(scan.nextInt());
+            switch (Person.getCategory()) {
                 case 1:
-                    setType(Type.Regular);
+                    Person.setType(Type.Regular);
                     break;
                 case 2:
-                    setType(Type.Premium);
+                    Person.setType(Type.Premium);
                     break;
                 case 3:
-                    setType(Type.WheelchairAccesible);
+                    Person.setType(Type.WheelchairAccesible);
             }
-            if (category > 3 || category < 1) {
+            if (Person.getCategory() > 3 || Person.getCategory() < 1) {
                 System.out.println("Invalid input");
                 System.out.println("Please try again");
             }
         }
 
-        while (getNumberPassengers() > 4) {
+        while (Person.getNumberPassengers() > 4) {
             System.out.println("How many passengers will there be?");
-            setNumberPassengers(scan.nextInt());
-            if (getNumberPassengers() > 4) {
+            Person.setNumberPassengers(scan.nextInt());
+            if (Person.getNumberPassengers() > 4) {
                 System.out.println("The limit for each vehicle is 4 passengers, please try again");
             }
         }
-        scan.close();
+        //scan.close();
     }
 
     public static void endMessage() {
         Scanner scan = new Scanner(System.in);
         System.out.println("The fare for this ride was: ");
         System.out.println("Please give your driver a rating between 1 and 5");
-        while (rating < 1 || rating > 5) {
-            rating = scan.nextDouble();
-            if (rating < 1 || rating > 5) {
+        while (Person.getRating() < 1 || Person.getRating() > 5) {
+            Person.setRating(scan.nextDouble());
+            if (Person.getRating() < 1 || Person.getRating() > 5) {
                 System.out.println("Invalid input, please try again");
             }
         }

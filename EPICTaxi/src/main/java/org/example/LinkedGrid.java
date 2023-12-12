@@ -10,7 +10,7 @@ import java.util.PriorityQueue;
 public class LinkedGrid {
     private Node first;
     private int dimension;
-
+    private Person person;
 
 
     public LinkedGrid(int dimension) { //gotta give the grid a size
@@ -57,6 +57,25 @@ public class LinkedGrid {
             }
         }
         markNodesAsEmpty();
+
+
+        //intialising the person with random coordiantes
+        this.person = new Person(10);
+        int personX = this.person.getLocX();
+        int personY = this.person.getLocY();
+
+        getNodeAt(personX, personY).setEmpty(false);
+
+    }
+    private Node getNodeAt(int x, int y) {
+        Node temp = first;
+        for (int i = 0; i < y; i++) {
+            temp = temp.getDown();
+        }
+        for (int i = 0; i < x; i++) {
+            temp = temp.getRight();
+        }
+        return temp;
     }
 
 
@@ -76,15 +95,12 @@ public class LinkedGrid {
         }
     }
 
-    private boolean isSpaceEmpty(int x, int y) {
+    public static boolean isSpaceEmpty(int x, int y) {
         int[][] emptyNodes = {
                 {2, 2},  // node 12 (x,y)
-                {2, 3},  // node 22
-                {9, 6},  // node 59
-                {9, 7},  // node 69
-                {1, 7},  // node 61
-                {2, 7},  // node 62
-                {3, 7}   // node 63
+                {2, 3}, {9, 6}, {9, 7}, {1, 7}, {2, 7}, {3, 7} ,{1,9},{2,9},{3,9},{5,9},{6,9},{7,9},
+                {9,9},{8,6},{8,7},{5,6},{5,7},{6,6},{6,7},{4,2},{5,2},{6,2},{7,2},{8,2},{9,2}
+
 
         };
         for (int[] node : emptyNodes) {
@@ -95,10 +111,12 @@ public class LinkedGrid {
         return false;
     }
 
-    private boolean isRiver( int x, int y) { //x = f, g =y
+    public static boolean isRiver(int x, int y) { //x = f, g =y
         int[][] river = {
                 //nodes that i want to be a river , its one line across with two spaces for bridges
-                {2, 4}, {3, 4}, {5, 4}, {6, 4}, {7, 4}, {9, 4},{10,4},{11, 4}
+                {2, 4}, {3, 4}, {5, 4}, {6, 4}, {7, 4}, {9, 4},{10,4},{11, 4},
+                {2, 5}, {3, 5}, {5, 5}, {6, 5}, {7, 5}, {9, 5}, {10, 5}, {11, 5}
+
 
         };
         for (int[] node : river) {
@@ -125,7 +143,10 @@ public class LinkedGrid {
 
                     if(isRiver(x, y)){
                         System.out.print("\u001B[34m ~ \u001B[0m"); // ANSI escape codes to make it blue
-                    }else{
+                    }else if(x == person.getLocX() && y == person.getLocY()){
+                        System.out.print("\uD83E\uDDCD"); // unicode for a peron emoji
+                    }
+                    else{
                         System.out.printf("%3d", temp.getData()); //spaces out all parts of grid so all nodes are aligned
                     }}
                 temp = temp.getRight();
@@ -138,85 +159,69 @@ public class LinkedGrid {
         }
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+    public List<Node> dijkstraShortestPath(Node start, Node end) {
+        Map<Node, Double> distanceMap = new HashMap<>();
+        Map<Node, Node> predecessorMap = new HashMap<>();
+        PriorityQueue<Node> priorityQueue = new PriorityQueue<>(Comparator.comparingDouble(distanceMap::get));
 
-        // ... (existing code remains the same)
+        distanceMap.put(start, 0.0);
+        priorityQueue.add(start);
 
-        public List<Node> dijkstraShortestPath(Node start, Node end) {
-            Map<Node, Double> distanceMap = new HashMap<>();
-            Map<Node, Node> predecessorMap = new HashMap<>();
-            PriorityQueue<Node> priorityQueue = new PriorityQueue<>(Comparator.comparingDouble(distanceMap::get));
+        while (!priorityQueue.isEmpty()) {
+            Node current = priorityQueue.poll();
 
-            distanceMap.put(start, 0.0);
-            priorityQueue.add(start);
+            for (Node neighbor : getNeighbors(current)) {
+                double newDistance = distanceMap.get(current) + getDistance(current, neighbor);
 
-            while (!priorityQueue.isEmpty()) {
-                Node current = priorityQueue.poll();
-
-                for (Node neighbor : getNeighbors(current)) {
-                    double newDistance = distanceMap.get(current) + getDistance(current, neighbor);
-
-                    if (!distanceMap.containsKey(neighbor) || newDistance < distanceMap.get(neighbor)) {
-                        distanceMap.put(neighbor, newDistance);
-                        predecessorMap.put(neighbor, current);
-                        priorityQueue.add(neighbor);
-                    }
+                if (!distanceMap.containsKey(neighbor) || newDistance < distanceMap.get(neighbor)) {
+                    distanceMap.put(neighbor, newDistance);
+                    predecessorMap.put(neighbor, current);
+                    priorityQueue.add(neighbor);
                 }
             }
-
-            return buildPath(start, end, predecessorMap);
         }
 
-        private List<Node> buildPath(Node start, Node end, Map<Node, Node> predecessorMap) {
-            List<Node> path = new ArrayList<>();
-            Node current = end;
+        return buildPath(start, end, predecessorMap);
+    }
 
-            while (current != null) {
-                path.add(current);
-                current = predecessorMap.get(current);
-            }
+    private List<Node> buildPath(Node start, Node end, Map<Node, Node> predecessorMap) {
+        List<Node> path = new ArrayList<>();
+        Node current = end;
 
-            Collections.reverse(path);
-
-            return path;
+        while (current != null) {
+            path.add(current);
+            current = predecessorMap.get(current);
         }
 
-        private List<Node> getNeighbors(Node node) {
-            List<Node> neighbors = new ArrayList<>();
+        Collections.reverse(path);
 
-            if (node.getRight() != null && !node.getRight().isEmpty()) {
-                neighbors.add(node.getRight());
-            }
-            if (node.getDown() != null && !node.getDown().isEmpty()) {
-                neighbors.add(node.getDown());
-            }
+        return path;
+    }
 
-            return neighbors;
+    private List<Node> getNeighbors(Node node) {
+        List<Node> neighbors = new ArrayList<>();
+
+        if (node.getRight() != null && !node.getRight().isEmpty()) {
+            neighbors.add(node.getRight());
+        }
+        if (node.getDown() != null && !node.getDown().isEmpty()) {
+            neighbors.add(node.getDown());
         }
 
-        private double getDistance(Node node1, Node node2) {
-            return 1.0;
-        }
+        return neighbors;
+    }
+
+    private double getDistance(Node node1, Node node2) {
+        return 1.0;
+    }
 
 
     public Node getFirst() {
         return first;
     }
 
-    public Node getNodeAt(int x, int y) {
-        Node temp = first;
-        for (int i = 0; i < y; i++) {
-            temp = temp.getDown();
-        }
-        for (int i = 0; i < x; i++) {
-            temp = temp.getRight();
-        }
-        return temp;
-    }
 
 
-    }
-
-
+}

@@ -27,18 +27,22 @@ public class Taxi {
     }
 
     public static void randomTaxiGenerate(Type type) {
-        CSVFileReading.readTaxiCSV();
-        List<Taxi> list = CSVFileReading.getTaxis();
+        //CSVFileReading.readTaxiCSV();
+        DataList<Taxi> list = CSVFileReading.getTaxis();
+        //DataList<T> list = (DataList<T>) CSVFileReading.getTaxis(type);
         Random rand = new Random();
-        for(Taxi car : list) {
+        for(int i = 0; i < list.size(); i++) {
+            //for(Taxi car : list) {
+            Taxi car = list.get(i);
             car.setPointX(rand.nextInt(10));
             car.setPointY(rand.nextInt(10));
             if (car.getType().equals(type)) {
                 car.setAvailable(rand.nextBoolean());
-                //car.setAvailable(true);
+                car.setAvailable(true);
             } else {
                 car.setAvailable(false);
             }
+            //}
         }
     }
 
