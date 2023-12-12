@@ -9,7 +9,8 @@ public class CSVFileReading {
     static String csvPath = "/Users/alisiakazimierek/MyRepos/EPICTaxi/EPICTaxi/src/TaxiFile.txt";
     static String tempCsvPath = "D:\\EPICTaxi\\src\\TempFile.txt";
 
-    private static List<Taxi> Taxis = new ArrayList<>();
+    //private static List<Taxi> Taxis = new ArrayList<>();
+    private static DataList<Taxi> taxiList = new DataList();
 
     public static void readTaxiCSV() {
 
@@ -37,7 +38,7 @@ public class CSVFileReading {
                         //System.out.println(make);
 
 
-                        Taxis.add(new Taxi(type, reg, make, model, driverName, rating, noOfTrips));
+                        taxiList.add(new Taxi(type, reg, make, model, driverName, rating, noOfTrips));
 
                     } catch (NumberFormatException e) {
                         System.err.println("Error parsing age: " + e.getMessage());
@@ -55,7 +56,11 @@ public class CSVFileReading {
             System.out.println("File not found");
             System.out.println(Taxis.get(11).getDriverName());
         }
+<<<<<<< HEAD
 
+=======
+        System.out.println(taxiList.get(11).getDriverName());
+>>>>>>> 8583861f59138e5e4451b29ad8ce8cb63be7bb8e
     }
     public static void updateRating() {
         List<String> updatedLines = new ArrayList<>();
@@ -71,7 +76,7 @@ public class CSVFileReading {
 
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
-                if (data.length == 7 && data[1].equals(Person.getAssignedTaxiReg())) {
+                if (data.length == 7 && data[1].equals(Person.getAssignedTaxi().getReg())) {
                     // Update the rating in the line
                     data[6] = String.valueOf(Person.getAssignedTaxi().getNoOfTrips() + 1);
                     data[5] = Double.toString(newRating);
@@ -98,8 +103,8 @@ public class CSVFileReading {
 
 
 
-        public static List<Taxi> getTaxis () {
-            return Taxis;
+        public static DataList<Taxi> getTaxis () {
+            return taxiList;
         }
     }
 
