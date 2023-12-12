@@ -11,7 +11,11 @@ public class Person {
     private static int category = 4;
     private static double rating = 6;
 
+<<<<<<< HEAD
    private static Taxi assignedTaxi = CSVFileReading.getTaxis().get(14);
+=======
+   private static Taxi assignedTaxi = CSVFileReading.getTaxis().get(15);
+>>>>>>> 453df01607b112b894f4af481b1000880c68c93c
     private static String assignedTaxiReg = assignedTaxi.getReg();
 
     public Person(int gridDimension){
@@ -40,18 +44,30 @@ public class Person {
     }
 
 
+<<<<<<< HEAD
+=======
+    public static String getAssignedTaxiReg() {return assignedTaxiReg;}
+
+>>>>>>> 453df01607b112b894f4af481b1000880c68c93c
 
    public static void setAssignedTaxiReg(String reg) {
        assignedTaxiReg = reg;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 453df01607b112b894f4af481b1000880c68c93c
 
 
 
+<<<<<<< HEAD
 
 
     public static Taxi getAssignedTaxi() {
         return assignedTaxi;
     }
+=======
+>>>>>>> 453df01607b112b894f4af481b1000880c68c93c
 
     public static void setAssignedTaxi(Taxi assignedTaxi) {
         Person.assignedTaxi = assignedTaxi;
@@ -92,4 +108,7 @@ public class Person {
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 453df01607b112b894f4af481b1000880c68c93c

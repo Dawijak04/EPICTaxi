@@ -22,7 +22,10 @@ public class Main {
         System.out.println("Driver name: " + Person.getAssignedTaxi().getDriverName());
         System.out.println("Availability: " + Person.getAssignedTaxi().isAvailable());
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 453df01607b112b894f4af481b1000880c68c93c
         UserInterface.endMessage();
 
         //Taxi.randomTaxiGenerate(UserInterface.getType());
@@ -49,14 +52,17 @@ public class Main {
       //  Node endNode = linkedGrid.getNodeAt(9, 5);
 
        // List<Node> shortestPath = linkedGrid.dijkstraShortestPath(startNode, endNode);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 453df01607b112b894f4af481b1000880c68c93c
 
 
 
         LinkedGrid linkedGrid = new LinkedGrid(10); // Adjust the dimension as needed
         linkedGrid.display();
 
-
+        System.out.println();
         Dijkstra dijkstra = new Dijkstra();
 
         Node startNode = dijkstra.getNodeAt(0, 2);
@@ -73,16 +79,23 @@ public class Main {
 
 
 
-        LinkedGrid lg = new LinkedGrid(10);
-        lg.display();
+        //LinkedGrid lg = new LinkedGrid(10);
+        //lg.display();
 
 
     }
+<<<<<<< HEAD
 
 
     public static int add(int a, int b) {
         return a + b;
     }
+=======
+  public static int add(int a, int b){
+        return a + b;
+  }
+
+>>>>>>> 453df01607b112b894f4af481b1000880c68c93c
 
 
 }
