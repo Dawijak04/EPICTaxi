@@ -1,6 +1,7 @@
 package main.java.org.example;
 
 import java.util.Scanner;
+
 public class UserInterface {
     private static int locX;
     private static int locY;
@@ -9,12 +10,12 @@ public class UserInterface {
     private static int category = 4;
     private static double rating = 6;
 
-    public static void welcome(){
+    public static void welcome() {
         System.out.println("Welcome to EcoTaxi");
         System.out.println("Every trip you take, will plant a tree to save the planet");
     }
 
-    public static void routeInfo(){
+    public static void routeInfo() {
 
         Scanner scan = new Scanner(System.in);
         System.out.println("Where would you like to go? Please input co-ordinates");
@@ -23,7 +24,7 @@ public class UserInterface {
         System.out.println("Y:");
         setLocY(scan.nextInt());
 
-        while(Person.getCategory() > 3 || Person.getCategory() < 1) {
+        while (Person.getCategory() > 3 || Person.getCategory() < 1) {
             System.out.println("Which type of vehicle do you require? Enter number");
             System.out.println("1. Regular");
             System.out.println("2. Premium");
@@ -75,16 +76,8 @@ public class UserInterface {
         return locX;
     }
 
-        public static void setLocX(int X) {
+    public static void setLocX(int X) {
         locX = X;
-    }
-
-    public int getLocY() {
-        return locY;
-    }
-
-    public static void setLocY(int Y) {
-        locY = Y;
     }
 
     public static Type getType() {
@@ -109,5 +102,13 @@ public class UserInterface {
 
     public static void setRating(int rating) {
         UserInterface.rating = rating;
+    }
+
+    public int getLocY() {
+        return locY;
+    }
+
+    public static void setLocY(int Y) {
+        locY = Y;
     }
 }

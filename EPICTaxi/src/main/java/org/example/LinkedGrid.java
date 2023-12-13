@@ -1,11 +1,12 @@
 package main.java.org.example;
+
 import java.util.ArrayList;
-        import java.util.Collections;
-        import java.util.Comparator;
-        import java.util.HashMap;
-        import java.util.List;
-        import java.util.Map;
-        import java.util.PriorityQueue;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
 
 public class LinkedGrid {
     private Node first;
@@ -67,39 +68,12 @@ public class LinkedGrid {
         getNodeAt(personX, personY).setEmpty(false);
 
     }
-    private Node getNodeAt(int x, int y) {
-        Node temp = first;
-        for (int i = 0; i < y; i++) {
-            temp = temp.getDown();
-        }
-        for (int i = 0; i < x; i++) {
-            temp = temp.getRight();
-        }
-        return temp;
-    }
-
-
-    private void markNodesAsEmpty(){
-        Node rowMarker = first;
-
-        for(int y = 0; y < dimension; y++){ //looping through the rows
-            Node temp = rowMarker;
-            for(int x = 0; x < dimension; x++){ //loop through the columns
-                if(isSpaceEmpty(x, y)){
-                    temp.setEmpty(true);
-                }
-                temp = temp.getRight();
-            }
-            rowMarker = rowMarker.getDown();
-
-        }
-    }
 
     public static boolean isSpaceEmpty(int x, int y) {
         int[][] emptyNodes = {
                 {2, 2},  // node 12 (x,y)
-                {2, 3}, {9, 6}, {9, 7}, {1, 7}, {2, 7}, {3, 7} ,{1,9},{2,9},{3,9},{5,9},{6,9},{7,9},
-                {9,9},{8,6},{8,7},{5,6},{5,7},{6,6},{6,7},{4,2},{5,2},{6,2},{7,2},{8,2},{9,2}
+                {2, 3}, {9, 6}, {9, 7}, {1, 7}, {2, 7}, {3, 7}, {1, 9}, {2, 9}, {3, 9}, {5, 9}, {6, 9}, {7, 9},
+                {9, 9}, {8, 6}, {8, 7}, {5, 6}, {5, 7}, {6, 6}, {6, 7}, {4, 2}, {5, 2}, {6, 2}, {7, 2}, {8, 2}, {9, 2}
 
 
         };
@@ -114,7 +88,7 @@ public class LinkedGrid {
     public static boolean isRiver(int x, int y) { //x = f, g =y
         int[][] river = {
                 //nodes that i want to be a river , its one line across with two spaces for bridges
-                {2, 4}, {3, 4}, {5, 4}, {6, 4}, {7, 4}, {9, 4},{10,4},{11, 4},
+                {2, 4}, {3, 4}, {5, 4}, {6, 4}, {7, 4}, {9, 4}, {10, 4}, {11, 4},
                 {2, 5}, {3, 5}, {5, 5}, {6, 5}, {7, 5}, {9, 5}, {10, 5}, {11, 5}
 
 
@@ -126,6 +100,33 @@ public class LinkedGrid {
         }
 
         return false;
+    }
+
+    private Node getNodeAt(int x, int y) {
+        Node temp = first;
+        for (int i = 0; i < y; i++) {
+            temp = temp.getDown();
+        }
+        for (int i = 0; i < x; i++) {
+            temp = temp.getRight();
+        }
+        return temp;
+    }
+
+    private void markNodesAsEmpty() {
+        Node rowMarker = first;
+
+        for (int y = 0; y < dimension; y++) { //looping through the rows
+            Node temp = rowMarker;
+            for (int x = 0; x < dimension; x++) { //loop through the columns
+                if (isSpaceEmpty(x, y)) {
+                    temp.setEmpty(true);
+                }
+                temp = temp.getRight();
+            }
+            rowMarker = rowMarker.getDown();
+
+        }
     }
 
     public void display() { //method to display the linked grid
@@ -141,14 +142,14 @@ public class LinkedGrid {
                     int x = temp.getData() % dimension;
                     int y = temp.getData() / dimension;
 
-                    if(isRiver(x, y)){
+                    if (isRiver(x, y)) {
                         System.out.print("\u001B[34m ~ \u001B[0m"); // ANSI escape codes to make it blue
-                    }else if(x == person.getLocX() && y == person.getLocY()){
+                    } else if (x == person.getLocX() && y == person.getLocY()) {
                         System.out.print("\uD83E\uDDCD"); // unicode for a peron emoji
-                    }
-                    else{
+                    } else {
                         System.out.printf("%3d", temp.getData()); //spaces out all parts of grid so all nodes are aligned
-                    }}
+                    }
+                }
                 temp = temp.getRight();
 
             }
@@ -158,7 +159,6 @@ public class LinkedGrid {
             rowMarker = temp;
         }
     }
-
 
 
     public List<Node> dijkstraShortestPath(Node start, Node end) {
@@ -221,8 +221,6 @@ public class LinkedGrid {
     public Node getFirst() {
         return first;
     }
-
-
 
 
 }

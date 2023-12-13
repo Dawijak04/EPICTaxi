@@ -9,63 +9,75 @@ public class Node {
     private boolean isEmpty;
 
 
-    Node(int data){
+    Node(int data) {
         this.data = data;
     }
-    public int getData(){
+
+    public int getData() {
         return data;
     }
-    public void setData(int data){
+
+    public void setData(int data) {
         this.data = data;
     }
-    public Node getUp(){
+
+    public Node getUp() {
         return up;
     }
-    public void setUp(Node up){
+
+    public void setUp(Node up) {
         this.up = up;
     }
-    public Node getDown(){
+
+    public Node getDown() {
         return down;
     }
-    public void setDown(Node down){
+
+    public void setDown(Node down) {
         this.down = down;
     }
-    public Node getLeft(){
+
+    public Node getLeft() {
         return left;
     }
-    public void setLeft(Node left){
+
+    public void setLeft(Node left) {
         this.left = left;
     }
-    public Node getRight(){
+
+    public Node getRight() {
         return right;
     }
-    public void setRight(Node right){
+
+    public void setRight(Node right) {
         this.right = right;
     }
-    public boolean isEmpty(){
+
+    public boolean isEmpty() {
         return isEmpty;
     }
-    public void setEmpty(boolean isEmpty){
+
+    public void setEmpty(boolean isEmpty) {
         this.isEmpty = isEmpty;
     }
-    public int getX(){
+
+    public int getX() {
         return x;
     }
 
-    public int getY(){
+    public int getY() {
         return y;
     }
-    public int setX(int x){
+
+    public int setX(int x) {
         this.x = x;
         return x;
     }
 
-    public int setY(int y){
+    public int setY(int y) {
         this.y = y;
         return y;
     }
-
-
 
 
 }

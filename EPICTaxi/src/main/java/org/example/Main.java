@@ -5,10 +5,10 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        System.out.println("THANK GOD!!!");
+        CSVFileReading.readTaxiCSV();
 
-          CSVFileReading.readTaxiCSV();
-
-       // CSVFileReading.readTaxiCSV();
+        // CSVFileReading.readTaxiCSV();
 
 
         UserInterface.welcome();
@@ -22,10 +22,7 @@ public class Main {
         System.out.println("Driver name: " + Person.getAssignedTaxi().getDriverName());
         System.out.println("Availability: " + Person.getAssignedTaxi().isAvailable());
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 453df01607b112b894f4af481b1000880c68c93c
         UserInterface.endMessage();
 
         //Taxi.randomTaxiGenerate(UserInterface.getType());
@@ -41,21 +38,17 @@ public class Main {
         //System.out.println(CSVFileReading.getTaxis().get(9).getPointX());
         //System.out.println(CSVFileReading.getTaxis().get(9).getPointY());
         // UserInterface.endMessage();
-       // LinkedGrid LG = new LinkedGrid(10);
+        // LinkedGrid LG = new LinkedGrid(10);
         //LG.display();
         ////////////////////////////////////////////////////////////////////////////////////////////////
-       // LinkedGrid linkedGrid = new LinkedGrid(10); // Adjust the dimension as needed
-       // linkedGrid.display();
+        // LinkedGrid linkedGrid = new LinkedGrid(10); // Adjust the dimension as needed
+        // linkedGrid.display();
 
         // Assuming startNode and endNode are valid nodes within the grid
-       // Node startNode = linkedGrid.getNodeAt(2,2);
-      //  Node endNode = linkedGrid.getNodeAt(9, 5);
+        // Node startNode = linkedGrid.getNodeAt(2,2);
+        //  Node endNode = linkedGrid.getNodeAt(9, 5);
 
-       // List<Node> shortestPath = linkedGrid.dijkstraShortestPath(startNode, endNode);
-<<<<<<< HEAD
-
-=======
->>>>>>> 453df01607b112b894f4af481b1000880c68c93c
+        // List<Node> shortestPath = linkedGrid.dijkstraShortestPath(startNode, endNode);
 
 
 
@@ -70,13 +63,10 @@ public class Main {
 
         DataList<Node> shortestPath = dijkstra.dijkstraShortestPath(startNode, endNode);
         System.out.println("Shortest Path:");
-        for(int i = 0; i < shortestPath.size(); i++) {
+        for (int i = 0; i < shortestPath.size(); i++) {
             Node node = shortestPath.get(i);
             System.out.print(node.getData() + " ");
         }
-
-
-
 
 
         //LinkedGrid lg = new LinkedGrid(10);
@@ -84,18 +74,14 @@ public class Main {
 
 
     }
-<<<<<<< HEAD
+
+
 
 
     public static int add(int a, int b) {
         return a + b;
     }
-=======
-  public static int add(int a, int b){
-        return a + b;
-  }
 
->>>>>>> 453df01607b112b894f4af481b1000880c68c93c
 
 
 }

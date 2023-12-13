@@ -1,4 +1,5 @@
 package main.java.org.example;
+
 import java.util.List;
 import java.util.Random;
 
@@ -13,6 +14,7 @@ public class Taxi {
     private int pointY;
     private double rating;
     private int noOfTrips;
+
     public Taxi(Type type, String reg, String make, String model, String driverName, double rating, int noOfTrips) {
         this.type = type;
         this.reg = reg;
@@ -31,7 +33,7 @@ public class Taxi {
         DataList<Taxi> list = CSVFileReading.getTaxis();
         //DataList<T> list = (DataList<T>) CSVFileReading.getTaxis(type);
         Random rand = new Random();
-        for(int i = 0; i < list.size(); i++) {
+        for (int i = 0; i < list.size(); i++) {
             //for(Taxi car : list) {
             Taxi car = list.get(i);
             car.setPointX(rand.nextInt(10));
@@ -45,7 +47,6 @@ public class Taxi {
             //}
         }
     }
-
 
 
     public Type getType() {
@@ -92,17 +93,25 @@ public class Taxi {
         return available;
     }
 
-   public void setAvailable(boolean available) {
+    public void setAvailable(boolean available) {
         this.available = available;
     }
 
-    public int getPointX() {return pointX;}
+    public int getPointX() {
+        return pointX;
+    }
 
-    public void setPointX(int pointX) {this.pointX = pointX;}
+    public void setPointX(int pointX) {
+        this.pointX = pointX;
+    }
 
-    public int getPointY() {return pointY;}
+    public int getPointY() {
+        return pointY;
+    }
 
-    public void setPointY(int pointY) {this.pointY = pointY;}
+    public void setPointY(int pointY) {
+        this.pointY = pointY;
+    }
 
     public double getRating() {
         return rating;

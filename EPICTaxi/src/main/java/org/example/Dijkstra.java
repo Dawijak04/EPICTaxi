@@ -11,6 +11,7 @@ import java.util.PriorityQueue;
 public class Dijkstra {
     LinkedGrid lg = new LinkedGrid(10);
     private Node first = lg.getFirst();
+
     public DataList<Node> dijkstraShortestPath(Node start, Node end) {
         DataHashMap<Node, Double> distanceMap = new DataHashMap<>();
         DataHashMap<Node, Node> predecessorMap = new DataHashMap<>();
@@ -21,7 +22,7 @@ public class Dijkstra {
 
         while (!priorityQueue.isEmpty()) {
             Node current = priorityQueue.poll();
-            for(int i = 0; i < getNeighbors(current).size(); i++) {
+            for (int i = 0; i < getNeighbors(current).size(); i++) {
                 Node neighbor = getNeighbors(current).get(i);
                 //for (Node neighbor : getNeighbors(current)) {
                 double newDistance = distanceMap.get(current) + getDistance(current, neighbor);
@@ -85,15 +86,15 @@ public class Dijkstra {
         return lg.isRiver(x, y);
     }
 
-   public double getDistance(Node node1, Node node2) {
+    public double getDistance(Node node1, Node node2) {
 
-       return 1.0;
-   }
+        return 1.0;
+    }
 
 
-  //  public Node getFirst() {
-  //      return first;
-  //  }
+    //  public Node getFirst() {
+    //      return first;
+    //  }
 
     public Node getNodeAt(int x, int y) {
         Node temp = first;
