@@ -1,4 +1,4 @@
-Regular,151-C-935,Honda,Accord,John,4.1,193
+Regular,151-C-935,Honda,Accord,John,4.12,195
 Regular,211-L-205,Mitsubishi,Outlander,Adam,3.8,92
 Premium,232-D-42,Mercedes,CLS,Jeffrey,4.7,26
 Regular,12-RN-831,Toyota,Prius,Alex,2.914,314
@@ -7,7 +7,7 @@ Regular,142-D-6559,Renault,Megane,Aran,5,204
 WheelchairAccesible,152-OY-749,Volskwagen,Caddy,Jake,4.1,261
 WheelchairAccesible,181-MN-852,Citroen,Berlingo,Mike,2.4,159
 Premium,211-LS-560,BMW,7 Series,Patrick,3.9,168
-Regular,161-D-23509,Mazda,6,Harvey,5,267
+Regular,161-D-23509,Mazda,6,Harvey,4.996,280
 Regular,12-SO-9563,Skoda,Superb,Harry,1.7,371
 Regular,172-KE-469,Kia,Sorento,Charlie,3.8,132
 Regular,201-TN-263,Nissan,Quashqai,James,2.9,150

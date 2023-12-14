@@ -5,16 +5,16 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("THANK GOD!!!");
+        //System.out.println("THANK GOD!!!");
         CSVFileReading.readTaxiCSV();
 
         // CSVFileReading.readTaxiCSV();
 
 
-        UserInterface.welcome();
-        UserInterface.routeInfo();
+       // UserInterface.welcome();
+        //UserInterface.routeInfo();
 
-        Taxi.randomTaxiGenerate(Person.getType());
+       // Taxi.randomTaxiGenerate(Person.getType());
 
         System.out.println("Type: " + Person.getAssignedTaxi().getType());
         System.out.println("Make: " + Person.getAssignedTaxi().getMake());
@@ -24,6 +24,7 @@ public class Main {
 
 
         UserInterface.endMessage();
+        //CSVFileReading.updateRating();
 
         //Taxi.randomTaxiGenerate(UserInterface.getType());
         //System.out.println(CSVFileReading.getTaxis().get(7).isAvailable());
@@ -59,7 +60,7 @@ public class Main {
         Dijkstra dijkstra = new Dijkstra();
 
         Node startNode = dijkstra.getNodeAt(0, 2);
-        Node endNode = dijkstra.getNodeAt(0, 9);
+        Node endNode = dijkstra.getNodeAt(9, 9);
 
         DataList<Node> shortestPath = dijkstra.dijkstraShortestPath(startNode, endNode);
         System.out.println("Shortest Path:");
