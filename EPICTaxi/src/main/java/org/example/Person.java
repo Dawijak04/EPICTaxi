@@ -8,7 +8,7 @@ public class Person {
     private static int numberPassengers = 5;
     private static int category = 4;
     private static double rating = 6;
-    private static Taxi assignedTaxi = CSVFileReading.getTaxis().get(14);
+    private static Taxi assignedTaxi = CSVFileReading.getTaxis().get(9);
 
 
     private static String assignedTaxiReg = assignedTaxi.getReg();

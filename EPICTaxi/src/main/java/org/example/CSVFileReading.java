@@ -7,7 +7,7 @@ import java.util.List;
 
 public class CSVFileReading {
     //static String csvPath = "/Users/alisiakazimierek/MyRepos/EPICTaxi/EPICTaxi/src/TaxiFile.txt";
-    static String csvPath = "D:\\EPICTaxi\\src\\TaxiFile.txt";
+    static String csvPath = "EPICTaxi//src//TaxiFile.txt";
     static String tempCsvPath = "D:\\EPICTaxi\\src\\TempFile.txt";
 
     //private static List<Taxi> Taxis = new ArrayList<>();
@@ -40,6 +40,7 @@ public class CSVFileReading {
 
 
                         taxiList.add(new Taxi(type, reg, make, model, driverName, rating, noOfTrips));
+                        //System.out.println(type + reg + make + model + driverName + rating + noOfTrips);
 
                     } catch (NumberFormatException e) {
                         System.err.println("Error parsing age: " + e.getMessage());
@@ -63,25 +64,27 @@ public class CSVFileReading {
     }
 
     public static void updateRating() {
-        List<String> updatedLines = new ArrayList<>();
+        DataList<String> updatedLines = new DataList<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvPath))) {
             String line;
 
             DecimalFormat roundToThree = new DecimalFormat("#.###");
             double newRating = ((Person.getAssignedTaxi().getRating() * Person.getAssignedTaxi().getNoOfTrips()) +
-                    Double.parseDouble(UserInterface.getRating())) /
+                    Double.parseDouble((Double.toString(Person.getRating())))) /
                     (Person.getAssignedTaxi().getNoOfTrips() + 1);
             newRating = Double.parseDouble(roundToThree.format(newRating));
 
             while ((line = br.readLine()) != null) {
+               // line = br.readLine();
+               // System.out.println(line);
                 String[] data = line.split(",");
-                if (data.length == 7 && data[1].equals(Person.getAssignedTaxi().getReg())) {
-                    // Update the rating in the line
-                    data[6] = String.valueOf(Person.getAssignedTaxi().getNoOfTrips() + 1);
+                if (data.length >= 7 && data[1].equals(Person.getAssignedTaxi().getReg())) {
                     data[5] = Double.toString(newRating);
-                    line = String.join(",", data);
+                    data[6] = String.valueOf(Person.getAssignedTaxi().getNoOfTrips() + 1);
                 }
+                    line = String.join(",", data);
+
                 updatedLines.add(line);
             }
         } catch (IOException e) {
@@ -90,7 +93,9 @@ public class CSVFileReading {
         }
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(csvPath))) {
-            for (String updatedLine : updatedLines) {
+            for(int i = 0; i < updatedLines.size(); i++) {
+                //System.out.println("for loop" + i);
+                String updatedLine = updatedLines.get(i);
                 bw.write(updatedLine);
                 bw.newLine();
             }

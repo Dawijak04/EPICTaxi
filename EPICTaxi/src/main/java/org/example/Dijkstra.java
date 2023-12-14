@@ -15,7 +15,7 @@ public class Dijkstra {
     public DataList<Node> dijkstraShortestPath(Node start, Node end) {
         DataHashMap<Node, Double> distanceMap = new DataHashMap<>();
         DataHashMap<Node, Node> predecessorMap = new DataHashMap<>();
-        PriorityQueue<Node> priorityQueue = new PriorityQueue<>(Comparator.comparingDouble(distanceMap::get));
+        DataPriorityQueue<Node> priorityQueue = new DataPriorityQueue<>(Comparator.comparingDouble(distanceMap::get));
 
         distanceMap.put(start, 0.0);
         priorityQueue.add(start);
