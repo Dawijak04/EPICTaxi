@@ -1,7 +1,6 @@
 package main.java.org.example;
-import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.List;
+
 
 
 public class DataPriorityQueue<T> {
