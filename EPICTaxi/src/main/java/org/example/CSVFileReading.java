@@ -12,6 +12,7 @@ public class CSVFileReading {
     //private static List<Taxi> Taxis = new ArrayList<>();
     private static DataList<Taxi> taxiList = new DataList();
 
+
     public static void readTaxiCSV() {
 
         try (
@@ -22,6 +23,7 @@ public class CSVFileReading {
             while ((line = reader.readLine()) != null) {
 
                 String[] data = line.split(",");
+
 
                 if (data.length >= 7) { // Ensure there are at least 5 columns
 
@@ -36,6 +38,7 @@ public class CSVFileReading {
                         int noOfTrips = Integer.parseInt(data[6].trim());
 
                         //System.out.println(make);
+
 
 
                         taxiList.add(new Taxi(type, reg, make, model, driverName, rating, noOfTrips));
@@ -54,12 +57,12 @@ public class CSVFileReading {
                 IOException e) {
             //e.printStackTrace();
             System.out.println("File not found");
-            System.out.println(taxiList.get(11).getDriverName());
+
         }
 
-        System.out.println(taxiList.get(11).getDriverName());
 
     }
+
     public static void updateRating() {
         List<String> updatedLines = new ArrayList<>();
 
@@ -99,10 +102,10 @@ public class CSVFileReading {
     }
 
 
-
-
-        public static DataList<Taxi> getTaxis () {
-            return taxiList;
-        }
+    public static DataList<Taxi> getTaxis() {
+        return taxiList;
     }
 
+
+
+}

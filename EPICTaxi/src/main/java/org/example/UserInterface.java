@@ -7,9 +7,10 @@ public class UserInterface {
     private static int numberPassengers = 5;
     private static int category = 4;
     private static double rating = 6;
+    private static DataList<Taxi> generatedTaxis;
 
     public static void welcome(){
-        System.out.println("Welcome to EcoTaxi");
+        System.out.println("Welcome to PlanetTaxi");
         System.out.println("Every trip you take, will plant a tree to save the planet");
     }
 
@@ -52,6 +53,16 @@ public class UserInterface {
             }
         }
         //scan.close();
+      //  LinkedGrid lg = new LinkedGrid(10);
+
+
+       // LinkedGrid.display();
+        //Person.setAssignedTaxiByType(CSVFileReading.getTaxis(), Person.getType());
+        //LinkedGrid.setShowSelectedTypeOnly(true);
+
+        System.out.println("LinkedGrid created successfully.");
+        scan.close();
+
     }
 
     public static void endMessage() {

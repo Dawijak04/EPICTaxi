@@ -1,22 +1,21 @@
 package org.example;
-import java.util.ArrayList;
-        import java.util.Collections;
-        import java.util.Comparator;
-        import java.util.HashMap;
-        import java.util.List;
-        import java.util.Map;
-        import java.util.PriorityQueue;
+
+import java.util.*;
 
 public class LinkedGrid {
     private Node first;
     private int dimension;
     private Person person;
+    public DataList<Taxi> generatedTaxis;
 
+
+    private boolean showSelectedTypeOnly = false;
+    private Type type;
+    private Node[][] nodes;
 
     public LinkedGrid(int dimension) { //gotta give the grid a size
 
         if (dimension > 0) {
-
             this.dimension = dimension;
             int counter = 1;
 
@@ -54,19 +53,34 @@ public class LinkedGrid {
                     columnMarker = columnMarker.getRight();
                 }
 
+
+
+
             }
         }
         markNodesAsEmpty();
+
 
 
         //intialising the person with random coordiantes
         this.person = new Person(10);
         int personX = this.person.getLocX();
         int personY = this.person.getLocY();
-
         getNodeAt(personX, personY).setEmpty(false);
 
+
+        this.generatedTaxis = Taxi.randomTaxiGenerate();
+        addTaxisToGrid(generatedTaxis);
+
+
+
     }
+
+
+
+
+
+
     private Node getNodeAt(int x, int y) {
         Node temp = first;
         for (int i = 0; i < y; i++) {
@@ -135,20 +149,29 @@ public class LinkedGrid {
 
         while (rowMarker != null) { //loop through rows
             while (temp != null) { // loop through columns
-                if (temp.isEmpty()) {
-                    System.out.print("\u001B[32m - \u001B[0m"); //ANSI escape code for green
-                } else {
+                if (!temp.isEmpty()) {
                     int x = temp.getData() % dimension;
                     int y = temp.getData() / dimension;
+                    // In display method
 
-                    if(isRiver(x, y)){
-                        System.out.print("\u001B[34m ~ \u001B[0m"); // ANSI escape codes to make it blue
-                    }else if(x == person.getLocX() && y == person.getLocY()){
-                        System.out.print("\uD83E\uDDCD"); // unicode for a peron emoji
+
+                    Taxi taxiAtPosition = getTaxiAtPosition(x, y, generatedTaxis);
+
+                    if(taxiAtPosition != null ){
+                        System.out.print(" \uD83D\uDE95");
+
                     }
-                    else{
+                    else if(isRiver(x, y)) {
+                        System.out.print("\u001B[34m ~ \u001B[0m"); // ANSI escape codes to make it blue
+                    } else if (x == person.getLocX() && y == person.getLocY()) {
+                        System.out.print("\uD83E\uDDCD"); // unicode for a peron emoji
+                    } else {
                         System.out.printf("%3d", temp.getData()); //spaces out all parts of grid so all nodes are aligned
-                    }}
+                    }
+
+                } else{
+                    System.out.print("\u001B[32m - \u001B[0m");
+                }
                 temp = temp.getRight();
 
             }
@@ -156,7 +179,20 @@ public class LinkedGrid {
             System.out.println();
             temp = rowMarker.getDown();
             rowMarker = temp;
+
+
         }
+    }
+
+
+    private Taxi getTaxiAtPosition(int x, int y, DataList<Taxi> generatedTaxis){
+        for(int i = 0; i < generatedTaxis.size(); i++){
+        Taxi taxi = generatedTaxis.get(i);
+            if(taxi.getPointX() == x && taxi.getPointY() == y){
+                return taxi;
+            }
+        }
+        return null;
     }
 
 
@@ -222,6 +258,74 @@ public class LinkedGrid {
         return first;
     }
 
+    public static boolean isTaxiAtPosition( int x, int y, DataList<Taxi> generatedTaxis){
+        for(int i = 0; i < generatedTaxis.size(); i ++){
+            Taxi taxi =generatedTaxis.get(i);
+            if (taxi.getPointX() == x && taxi.getPointY() == y){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public void setShowSelectedTypeOnly(boolean showSelectedTypeOnly){
+        this.showSelectedTypeOnly = showSelectedTypeOnly;
+    }
+
+private void printTaxiEmoji(Taxi taxi){
+
+if(taxi != null){
+            switch(taxi.getType()){
+
+                case Regular:
+                    System.out.print("\uD83D\uDE95");
+                    break;
+                case Premium:
+                    System.out.print("\uD83D\uDE99");
+                    break;
+                case WheelchairAccesible:
+                    System.out.print("\uD83D\uDE90");
+
+            }}
+
+
+}
+
+    public void addTaxisToGrid( DataList<Taxi> generatedTaxis ) {
+        for (int i = 0; i < generatedTaxis.size(); i++) {
+            Taxi taxi = generatedTaxis.get(i);
+            int x = taxi.getPointX();
+            int y = taxi.getPointY();
+            Node node = getNodeAt(x, y);
+
+            // In addTaxisToGrid method
+            System.out.println("Adding taxi at (" + x + ", " + y + ")");
+            System.out.println("isTaxiAtPosition: " + isTaxiAtPosition( x, y, generatedTaxis));
+
+
+
+            // Check if the space is empty and not occupied by another taxi
+            if (node != null && node.isEmpty() && !isTaxiAtPosition( x, y, generatedTaxis)) {
+                node.setEmpty(false);
+            }
+        }
+    }
+    public Person getPerson() {
+        return person;
+    }
+
+    public int getSize(){
+        return dimension;
+    }
+    public int getData(int x, int y) {
+        Node node = getNodeAt(x, y);
+        if (node != null) {
+            return node.getData();
+        } else {
+            // Handle the case where the node is null (out of bounds)
+            return -1; // You can choose a suitable default value
+        }}
 
 
 

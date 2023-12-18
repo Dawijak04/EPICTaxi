@@ -1,11 +1,13 @@
 package org.example;
 
 public class Node {
+    private Taxi taxi;
+    private boolean originalEmpty;
+    private Taxi originalTaxi;
     private int x;
     private int y;
     private int data;
     private Node up, down, left, right;
-    private Object info;
     private boolean isEmpty;
 
 
@@ -65,6 +67,29 @@ public class Node {
         return y;
     }
 
+    public void setOriginalEmpty(boolean originalEmpty) {
+        this.originalEmpty = originalEmpty;
+    }
+
+    public boolean getOriginalEmpty() {
+        return originalEmpty;
+    }
+
+    public void setTaxi(Taxi taxi) {
+        this.taxi = taxi;
+    }
+
+    public Taxi getTaxi() {
+        return taxi;
+    }
+
+    public void setOriginalTaxi(Taxi originalTaxi) {
+        this.originalTaxi = originalTaxi;
+    }
+
+    public Taxi getOriginalTaxi() {
+        return originalTaxi;
+    }
 
 
 
