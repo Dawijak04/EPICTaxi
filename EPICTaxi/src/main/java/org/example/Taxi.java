@@ -29,12 +29,9 @@ public class Taxi {
     }
 
     public static void randomTaxiGenerate(Type type) {
-        //CSVFileReading.readTaxiCSV();
         DataList<Taxi> list = CSVFileReading.getTaxis();
-        //DataList<T> list = (DataList<T>) CSVFileReading.getTaxis(type);
         Random rand = new Random();
         for (int i = 0; i < list.size(); i++) {
-            //for(Taxi car : list) {
             Taxi car = list.get(i);
             car.setPointX(rand.nextInt(10));
             car.setPointY(rand.nextInt(10));
@@ -44,7 +41,6 @@ public class Taxi {
             } else {
                 car.setAvailable(false);
             }
-            //}
         }
     }
 

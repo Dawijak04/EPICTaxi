@@ -8,7 +8,7 @@ public class Person {
     private static int numberPassengers = 5;
     private static int category = 4;
     private static double rating = 6;
-    private static Taxi assignedTaxi = CSVFileReading.getTaxis().get(9);
+    private static Taxi assignedTaxi = CSVFileReading.getTaxis().get(15);
 
 
     private static String assignedTaxiReg = assignedTaxi.getReg();
@@ -81,19 +81,19 @@ public class Person {
         rating = r;
     }
 
-    public int getLocX() {
+    public  int getLocX() {
         return locX;
     }
 
-    public void setLocX(int locX) {
-        this.locX = locX;
+    public void setLocX(int X) {
+        locX = X;
     }
 
-    public int getLocY() {
+    public  int getLocY() {
         return locY;
     }
 
-    public void setLocY(int locY) {
-        this.locY = locY;
+    public void setLocY(int Y) {
+        locY = Y;
     }
 }

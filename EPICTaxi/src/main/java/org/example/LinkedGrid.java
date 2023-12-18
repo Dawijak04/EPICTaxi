@@ -11,7 +11,7 @@ import java.util.PriorityQueue;
 public class LinkedGrid {
     private Node first;
     private int dimension;
-    private Person person;
+    private static Person person;
 
 
     public LinkedGrid(int dimension) { //gotta give the grid a size
@@ -161,68 +161,16 @@ public class LinkedGrid {
     }
 
 
-    public List<Node> dijkstraShortestPath(Node start, Node end) {
-        Map<Node, Double> distanceMap = new HashMap<>();
-        Map<Node, Node> predecessorMap = new HashMap<>();
-        PriorityQueue<Node> priorityQueue = new PriorityQueue<>(Comparator.comparingDouble(distanceMap::get));
 
-        distanceMap.put(start, 0.0);
-        priorityQueue.add(start);
-
-        while (!priorityQueue.isEmpty()) {
-            Node current = priorityQueue.poll();
-
-            for (Node neighbor : getNeighbors(current)) {
-                double newDistance = distanceMap.get(current) + getDistance(current, neighbor);
-
-                if (!distanceMap.containsKey(neighbor) || newDistance < distanceMap.get(neighbor)) {
-                    distanceMap.put(neighbor, newDistance);
-                    predecessorMap.put(neighbor, current);
-                    priorityQueue.add(neighbor);
-                }
-            }
-        }
-
-        return buildPath(start, end, predecessorMap);
-    }
-
-    private List<Node> buildPath(Node start, Node end, Map<Node, Node> predecessorMap) {
-        List<Node> path = new ArrayList<>();
-        Node current = end;
-
-        while (current != null) {
-            path.add(current);
-            current = predecessorMap.get(current);
-        }
-
-        Collections.reverse(path);
-
-        return path;
-    }
-
-    private List<Node> getNeighbors(Node node) {
-        List<Node> neighbors = new ArrayList<>();
-
-        if (node.getRight() != null && !node.getRight().isEmpty()) {
-            neighbors.add(node.getRight());
-        }
-        if (node.getDown() != null && !node.getDown().isEmpty()) {
-            neighbors.add(node.getDown());
-        }
-
-        return neighbors;
-    }
-
-    private double getDistance(Node node1, Node node2) {
-        return 1.0;
-    }
 
 
     public Node getFirst() {
         return first;
     }
 
-
+    public static Person getPerson() {
+        return person;
+    }
 }
 
 
