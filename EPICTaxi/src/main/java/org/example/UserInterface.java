@@ -1,20 +1,24 @@
-package org.example;
+package main.java.org.example;
+
 import java.util.Scanner;
+
 public class UserInterface {
-    private static int locX;
-    private static int locY;
-    private static Type type;
-    private static int numberPassengers = 5;
+
+    private static int locX;//users x coordinate
+    private static int locY;//users y coodrinate
+    private static Type type;//users desired type of taxi
+    private static int numberPassengers = 5;//number of passengers
     private static int category = 4;
-    private static double rating = 6;
+    private static double rating = 6;//users rating of taxi driver
     private static DataList<Taxi> generatedTaxis;
 
     public static void welcome(){
         System.out.println("Welcome to PlanetTaxi");
+
         System.out.println("Every trip you take, will plant a tree to save the planet");
     }
 
-    public static void routeInfo(){
+    public static void routeInfo() { //gathers all necessary info about the trip
 
         Scanner scan = new Scanner(System.in);
         System.out.println("Where would you like to go? Please input co-ordinates");
@@ -23,7 +27,7 @@ public class UserInterface {
         System.out.println("Y:");
         setLocY(scan.nextInt());
 
-        while(Person.getCategory() > 3 || Person.getCategory() < 1) {
+        while (Person.getCategory() > 3 || Person.getCategory() < 1) { //checks for invalid inputs
             System.out.println("Which type of vehicle do you require? Enter number");
             System.out.println("1. Regular");
             System.out.println("2. Premium");
@@ -39,19 +43,21 @@ public class UserInterface {
                 case 3:
                     Person.setType(Type.WheelchairAccesible);
             }
-            if (Person.getCategory() > 3 || Person.getCategory() < 1) {
+            if (Person.getCategory() > 3 || Person.getCategory() < 1) { //informs user of invalid inputs
                 System.out.println("Invalid input");
                 System.out.println("Please try again");
+
             }
         }
 
-        while (Person.getNumberPassengers() > 4) {
+        while (Person.getNumberPassengers() > 4) { //checks for invalid inputs
             System.out.println("How many passengers will there be?");
             Person.setNumberPassengers(scan.nextInt());
-            if (Person.getNumberPassengers() > 4) {
+            if (Person.getNumberPassengers() > 4) { //informs user of invalid inputs
                 System.out.println("The limit for each vehicle is 4 passengers, please try again");
             }
         }
+
         //scan.close();
       //  LinkedGrid lg = new LinkedGrid(10);
 
@@ -63,9 +69,10 @@ public class UserInterface {
         System.out.println("LinkedGrid created successfully.");
         scan.close();
 
+
     }
 
-    public static void endMessage() {
+    public static void endMessage() { //message displayed at end of trip
         Scanner scan = new Scanner(System.in);
         System.out.println("The fare for this ride was: ");
         System.out.println("Please give your driver a rating between 1 and 5");
@@ -75,7 +82,7 @@ public class UserInterface {
                 System.out.println("Invalid input, please try again");
             }
         }
-        CSVFileReading.updateRating();
+        CSVFileReading.updateRating(); //update the drivers rating
         System.out.println("Thank you for choosing EcoTaxi");
         scan.close();
     }
@@ -84,16 +91,8 @@ public class UserInterface {
         return locX;
     }
 
-        public static void setLocX(int X) {
+    public static void setLocX(int X) {
         locX = X;
-    }
-
-    public int getLocY() {
-        return locY;
-    }
-
-    public static void setLocY(int Y) {
-        locY = Y;
     }
 
     public static Type getType() {
@@ -118,5 +117,13 @@ public class UserInterface {
 
     public static void setRating(int rating) {
         UserInterface.rating = rating;
+    }
+
+    public int getLocY() {
+        return locY;
+    }
+
+    public static void setLocY(int Y) {
+        locY = Y;
     }
 }

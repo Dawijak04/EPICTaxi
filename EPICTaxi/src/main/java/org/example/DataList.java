@@ -1,4 +1,5 @@
-package org.example;
+package main.java.org.example;
+
 import java.util.Arrays;
 import java.util.Iterator;
 
@@ -24,9 +25,6 @@ public class DataList<T> {
         ensureCapacity();
         elements[size++] = element;
     }
-
-
-
 
 
     private void ensureCapacity() {
@@ -55,9 +53,28 @@ public class DataList<T> {
     @SuppressWarnings("unchecked")
     public T get(int index) {
         if (index < 0 || index >= size) {
+
+           throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+       }
+        return (T) elements[index];
+    }
+
+    public void set(int index, T element) {
+        if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
         }
-        return (T) elements[index];
+        elements[index] = element;
+    }
+
+    public void remove(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
+
+        // Shift elements to the left to remove the element at the specified index
+        System.arraycopy(elements, index + 1, elements, index, size - index - 1);
+        elements[--size] = null; // Set the last element to null and decrease size
+
     }
 
 

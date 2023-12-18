@@ -1,3 +1,4 @@
+
 package org.example;
 
 
@@ -5,9 +6,6 @@ public class Main {
     public static void main(String[] args) {
 
           CSVFileReading.readTaxiCSV();
-
-
-
 
 
 
@@ -23,6 +21,7 @@ public class Main {
 
 
 
+
         // System.out.println("Type: " + Person.getAssignedTaxi().getType());
       // System.out.println("Make: " + Person.getAssignedTaxi().getMake());
        // System.out.println("Model: " + Person.getAssignedTaxi().getModel());
@@ -33,31 +32,14 @@ public class Main {
 
        // UserInterface.endMessage();
 
-        //Taxi.randomTaxiGenerate(UserInterface.getType());
-        //System.out.println(CSVFileReading.getTaxis().get(7).isAvailable());
-        //System.out.println(CSVFileReading.getTaxis().get(7).getPointX());
-        //System.out.println(CSVFileReading.getTaxis().get(7).getPointY());
-        //System.out.println("break");
-        //System.out.println(CSVFileReading.getTaxis().get(8).isAvailable());
-        //System.out.println(CSVFileReading.getTaxis().get(8).getPointX());
-        //System.out.println(CSVFileReading.getTaxis().get(8).getPointY());
-        //System.out.println("break");
-        //System.out.println(CSVFileReading.getTaxis().get(9).isAvailable());
-        //System.out.println(CSVFileReading.getTaxis().get(9).getPointX());
-        //System.out.println(CSVFileReading.getTaxis().get(9).getPointY());
-        // UserInterface.endMessage();
-       // LinkedGrid LG = new LinkedGrid(10);
-        //LG.display();
-        ////////////////////////////////////////////////////////////////////////////////////////////////
-       // LinkedGrid linkedGrid = new LinkedGrid(10); // Adjust the dimension as needed
-       // linkedGrid.display();
 
-        // Assuming startNode and endNode are valid nodes within the grid
-       // Node startNode = linkedGrid.getNodeAt(2,2);
-      //  Node endNode = linkedGrid.getNodeAt(9, 5);
 
-       // List<Node> shortestPath = linkedGrid.dijkstraShortestPath(startNode, endNode);
+        //Dijkstra dijkstra = new Dijkstra();
 
+
+        //Node startNode = dijkstra.getNodeAt(LinkedGrid.getPerson().getLocX(), LinkedGrid.getPerson().getLocY());
+
+        //Node endNode = dijkstra.getNodeAt(9, 9);
 
 
 
@@ -76,18 +58,17 @@ public class Main {
        // }
 
 
-
-
-
-        //LinkedGrid lg = new LinkedGrid(10);
-        //lg.display();
+        UserInterface.endMessage();
 
 
     }
-  public static int add(int a, int b){
-        return a + b;
-  }
 
+
+
+
+    public static int add(int a, int b) {
+        return a + b;
+    }
 
 
 }

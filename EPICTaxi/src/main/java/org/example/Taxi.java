@@ -1,4 +1,6 @@
+
 package org.example;
+
 import java.util.Random;
 
 public class Taxi {
@@ -28,6 +30,7 @@ public class Taxi {
         this.rating = rating;
         this.noOfTrips = noOfTrips;
     }
+
 
     public static DataList<Taxi> randomTaxiGenerate( ) {
 
@@ -81,13 +84,11 @@ public class Taxi {
             Taxi taxi = taxis.get(i);
             if(taxi.getPointX() == x && taxi.getPointY() == y){
                 return true;
+
             }
         }
         return false;
     }
-
-
-
 
 
 
@@ -135,17 +136,25 @@ public class Taxi {
         return available;
     }
 
-   public void setAvailable(boolean available) {
+    public void setAvailable(boolean available) {
         this.available = available;
     }
 
-    public int getPointX() {return pointX;}
+    public int getPointX() {
+        return pointX;
+    }
 
-    public void setPointX(int pointX) {this.pointX = pointX;}
+    public void setPointX(int pointX) {
+        this.pointX = pointX;
+    }
 
-    public int getPointY() {return pointY;}
+    public int getPointY() {
+        return pointY;
+    }
 
-    public void setPointY(int pointY) {this.pointY = pointY;}
+    public void setPointY(int pointY) {
+        this.pointY = pointY;
+    }
 
     public double getRating() {
         return rating;

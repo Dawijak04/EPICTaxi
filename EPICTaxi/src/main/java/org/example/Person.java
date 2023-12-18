@@ -1,16 +1,20 @@
+
 package org.example;
 import java.util.Random;
 import java.util.Scanner;
+p
 
+import java.util.Random;
 
 
 public class Person {
-    private int locX;
-    private int locY;
     private static Type type;
     private static int numberPassengers = 5;
     private static int category = 4;
     private static double rating = 6;
+    private static Taxi assignedTaxi = CSVFileReading.getTaxis().get(15);
+
+
 
    private static Taxi assignedTaxi ;
     private static String assignedTaxiReg;
@@ -20,62 +24,57 @@ public class Person {
 
     private int originalY;
 
-    public Person(int gridDimension){
+
+    private int locX;
+
+    private int locY;
+
+    public Person(int gridDimension) {
         Random rand = new Random();
 
         do {
             this.locX = rand.nextInt(gridDimension);
             this.locY = rand.nextInt(gridDimension);
+
         }while(LinkedGrid.isRiver(locX, locY) || LinkedGrid.isSpaceEmpty(locX, locY));
 
+
     }
 
-    public int getLocX() {
-        return locX;
+    public static String getAssignedTaxiReg() {
+        return assignedTaxiReg;
     }
 
-    public void setLocX(int locX) {
-        this.locX = locX;
+    public static void setAssignedTaxiReg(String reg) {
+        assignedTaxiReg = reg;
     }
 
-    public int getLocY() {
-        return locY;
+    public static Taxi getAssignedTaxi() {
+        return assignedTaxi;
     }
-
-    public void setLocY(int locY) {
-        this.locY = locY;
-    }
-
-
-    public static String getAssignedTaxiReg() {return assignedTaxiReg;}
-
-
-   public static void setAssignedTaxiReg(String reg) {
-       assignedTaxiReg = reg;
-    }
-
-
-   public static Taxi getAssignedTaxi() {
-       return assignedTaxi;
-   }
-
-
 
     public static void setAssignedTaxi(Taxi assignedTaxi) {
         Person.assignedTaxi = assignedTaxi;
     }
 
+
     public static Type getType() {
         return type;
     }
+
 
     public static void setType(Type t) {
         type = t;
     }
 
+
+
+
+
     public static int getNumberPassengers() {
         return numberPassengers;
     }
+
 
     public static void setNumberPassengers(int Passengers) {
         numberPassengers = Passengers;
@@ -96,6 +95,7 @@ public class Person {
     public static void setRating(double r) {
         rating = r;
     }
+
 
     public static void setAssignedTaxiByType(DataList<Taxi> taxilist,Type type){
         DataList<Taxi>availableTaxis = getTaxisByType(taxilist, type);
@@ -163,4 +163,19 @@ Scanner scanner = new Scanner(System.in);
 }
 
 
+    public  int getLocX() {
+        return locX;
+    }
 
+    public void setLocX(int X) {
+        locX = X;
+    }
+
+    public  int getLocY() {
+        return locY;
+    }
+
+    public void setLocY(int Y) {
+        locY = Y;
+    }
+}
