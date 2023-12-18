@@ -17,7 +17,7 @@ public class Taxi {
     private int pointY;
     private double rating;
     private int noOfTrips;
-
+private boolean isVisible;
     public Taxi(Type type, String reg, String make, String model, String driverName, double rating, int noOfTrips) {
         this.type = type;
         this.reg = reg;
@@ -64,13 +64,6 @@ public class Taxi {
             // Add the generated Taxi to the list
             generatedTaxis.add(generatedTaxi);
 
-            System.out.println("Generated Taxi: Coordinates (" + x + ", " + y + "), Type: " + csvTaxi.getType() +
-                    ", Reg: " + generatedTaxi.getReg() +
-                    ", Make: " + generatedTaxi.getMake() +
-                    ", Model: " + generatedTaxi.getModel() +
-                    ", Driver Name: " + generatedTaxi.getDriverName() +
-                    ", Rating: " + generatedTaxi.getRating() +
-                    ", No. of Trips: " + generatedTaxi.getNoOfTrips());
         }
 
 
@@ -184,6 +177,12 @@ public class Taxi {
 
     public void setOriginalY(int originalX) {
         this.originalX = originalX;
+    }
+    public boolean isVisible(){
+        return isVisible;
+    }
+    public void setVisible(boolean visible){
+        isVisible = visible;
     }
 
 }

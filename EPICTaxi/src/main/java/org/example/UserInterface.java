@@ -66,7 +66,7 @@ public class UserInterface {
         //Person.setAssignedTaxiByType(CSVFileReading.getTaxis(), Person.getType());
         //LinkedGrid.setShowSelectedTypeOnly(true);
 
-        System.out.println("LinkedGrid created successfully.");
+
         //scan.close();
 
 

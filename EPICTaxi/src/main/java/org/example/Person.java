@@ -97,55 +97,7 @@ public class Person {
     }
 
 
-    public static void setAssignedTaxiByType(DataList<Taxi> taxilist,Type type){
-        DataList<Taxi>availableTaxis = getTaxisByType(taxilist, type);
 
-        if(availableTaxis.isEmpty()){
-            System.out.println("no avaiable taxis of your choosen type");
-            return;
-        }
-        int userChooses = displayAvailableTaxis(availableTaxis);
-
-        if(userChooses < 0 || userChooses>= availableTaxis.size()){
-            System.out.println("Invalid choice. Please choose a valid taxi");
-            return;
-        }
-
-        // Set the chosen taxi as the assigned taxi
-        assignedTaxi = availableTaxis. get(userChooses);
-        assignedTaxiReg = assignedTaxi.getReg();
-        }
-
-
-
-
-
-
-
-    private static DataList<Taxi> getTaxisByType(DataList<Taxi> taxilist, Type type){
-        DataList<Taxi> availableTaxis = new DataList<>();
-        for(int i = 0; i < taxilist.size(); i++){
-            Taxi taxi = taxilist.get(i);
-            if(taxi.getType() == type){
-                availableTaxis.add(taxi);
-            }
-        }
-return availableTaxis;
-
-    }
-
-
-private static int displayAvailableTaxis(DataList<Taxi> availableTaxis){
-Scanner scanner = new Scanner(System.in);
-    System.out.println("The available taxis are: ");
-    for(int i = 0; i< availableTaxis.size(); i++){
-        System.out.println(i + ". " + availableTaxis.get(i).getReg());
-
-    }
-    System.out.println("Choose a taxi by entering its number: ");
-    int choice = scanner.nextInt();;
-    return choice;
-    }
     public int getOriginalX() {
         return originalX;
     }
@@ -178,4 +130,5 @@ Scanner scanner = new Scanner(System.in);
     public void setLocY(int Y) {
         locY = Y;
     }
+
 }

@@ -223,24 +223,7 @@ public class LinkedGrid {
         this.showSelectedTypeOnly = showSelectedTypeOnly;
     }
 
-private void printTaxiEmoji(Taxi taxi){
 
-if(taxi != null){
-            switch(taxi.getType()){
-
-                case Regular:
-                    System.out.print("\uD83D\uDE95");
-                    break;
-                case Premium:
-                    System.out.print("\uD83D\uDE99");
-                    break;
-                case WheelchairAccesible:
-                    System.out.print("\uD83D\uDE90");
-
-            }}
-
-
-}
 
     public void addTaxisToGrid( DataList<Taxi> generatedTaxis ) {
         for (int i = 0; i < generatedTaxis.size(); i++) {
@@ -249,13 +232,8 @@ if(taxi != null){
             int y = taxi.getPointY();
             Node node = getNodeAt(x, y);
 
-            // In addTaxisToGrid method
-            System.out.println("Adding taxi at (" + x + ", " + y + ")");
-            System.out.println("isTaxiAtPosition: " + isTaxiAtPosition( x, y, generatedTaxis));
 
-
-
-            // Check if the space is empty and not occupied by another taxi
+            // Checking if the space is empty and not occupied by another taxi
             if (node != null && node.isEmpty() && !isTaxiAtPosition( x, y, generatedTaxis)) {
                 node.setEmpty(false);
 
@@ -275,8 +253,8 @@ if(taxi != null){
         if (node != null) {
             return node.getData();
         } else {
-            // Handle the case where the node is null (out of bounds)
-            return-1 ; // You can choose a suitable default value
+            // Handles the case where the node is null
+            return-1 ;
         }}
 
 
