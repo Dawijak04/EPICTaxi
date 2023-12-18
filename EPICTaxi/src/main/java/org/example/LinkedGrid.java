@@ -83,38 +83,6 @@ public class LinkedGrid {
 
 
 
-
-
-
-    private Node getNodeAt(int x, int y) {
-        Node temp = first;
-        for (int i = 0; i < y; i++) {
-            temp = temp.getDown();
-        }
-        for (int i = 0; i < x; i++) {
-            temp = temp.getRight();
-        }
-        return temp;
-    }
-
-
-    private void markNodesAsEmpty(){
-        Node rowMarker = first;
-
-        for(int y = 0; y < dimension; y++){ //looping through the rows
-            Node temp = rowMarker;
-            for(int x = 0; x < dimension; x++){ //loop through the columns
-                if(isSpaceEmpty(x, y)){
-                    temp.setEmpty(true);
-                }
-                temp = temp.getRight();
-            }
-            rowMarker = rowMarker.getDown();
-
-        }
-    }
-
-
     public static boolean isSpaceEmpty(int x, int y) {
         int[][] emptyNodes = {
                 {2, 2},  // node 12 (x,y)

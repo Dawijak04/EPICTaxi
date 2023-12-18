@@ -2,7 +2,7 @@
 package org.example;
 import java.util.Random;
 import java.util.Scanner;
-p
+
 
 import java.util.Random;
 
@@ -12,7 +12,7 @@ public class Person {
     private static int numberPassengers = 5;
     private static int category = 4;
     private static double rating = 6;
-    private static Taxi assignedTaxi = CSVFileReading.getTaxis().get(15);
+
 
 
 
@@ -160,7 +160,7 @@ Scanner scanner = new Scanner(System.in);
     public void setOriginalY(int originalY) {
         this.originalY = originalY;
     }
-}
+
 
 
     public  int getLocX() {

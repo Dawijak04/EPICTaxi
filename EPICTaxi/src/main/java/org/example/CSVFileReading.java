@@ -1,4 +1,4 @@
-package main.java.org.example;
+package org.example;
 
 import java.io.*;
 import java.text.DecimalFormat;
@@ -109,4 +109,3 @@ public class CSVFileReading {
 }
 
 
-}
