@@ -1,6 +1,7 @@
 package main.java.org.example;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class DataList<T> {
     private int defaultSize = 10;
@@ -52,6 +53,7 @@ public class DataList<T> {
     @SuppressWarnings("unchecked")
     public T get(int index) {
         if (index < 0 || index >= size) {
+
            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
        }
         return (T) elements[index];
@@ -72,6 +74,7 @@ public class DataList<T> {
         // Shift elements to the left to remove the element at the specified index
         System.arraycopy(elements, index + 1, elements, index, size - index - 1);
         elements[--size] = null; // Set the last element to null and decrease size
+
     }
 
 

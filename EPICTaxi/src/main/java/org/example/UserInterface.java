@@ -3,14 +3,18 @@ package main.java.org.example;
 import java.util.Scanner;
 
 public class UserInterface {
-    private static int locX; //users x coordinate
-    private static int locY; //users y coodrinate
-    private static Type type; //users desired type of taxi
-    private static int numberPassengers = 5; //number of passengers
-    private static double rating = 6; //users rating of taxi driver
 
-    public static void welcome() { //message displayed at the beginning
-        System.out.println("Welcome to EcoTaxi");
+    private static int locX;//users x coordinate
+    private static int locY;//users y coodrinate
+    private static Type type;//users desired type of taxi
+    private static int numberPassengers = 5;//number of passengers
+    private static int category = 4;
+    private static double rating = 6;//users rating of taxi driver
+    private static DataList<Taxi> generatedTaxis;
+
+    public static void welcome(){
+        System.out.println("Welcome to PlanetTaxi");
+
         System.out.println("Every trip you take, will plant a tree to save the planet");
     }
 
@@ -53,6 +57,19 @@ public class UserInterface {
                 System.out.println("The limit for each vehicle is 4 passengers, please try again");
             }
         }
+
+        //scan.close();
+      //  LinkedGrid lg = new LinkedGrid(10);
+
+
+       // LinkedGrid.display();
+        //Person.setAssignedTaxiByType(CSVFileReading.getTaxis(), Person.getType());
+        //LinkedGrid.setShowSelectedTypeOnly(true);
+
+        System.out.println("LinkedGrid created successfully.");
+        scan.close();
+
+
     }
 
     public static void endMessage() { //message displayed at end of trip

@@ -10,6 +10,7 @@ public class CSVFileReading {
 
     private static DataList<Taxi> taxiList = new DataList();
 
+
     public static void readTaxiCSV() {
 
         try (
@@ -21,7 +22,9 @@ public class CSVFileReading {
 
                 String[] data = line.split(","); //split csv line into a string array
 
+
                 if (data.length >= 7) { // Ensure there are at least 7 columns
+
 
 
                     try {
@@ -37,6 +40,7 @@ public class CSVFileReading {
                         taxiList.add(new Taxi(type, reg, make, model, driverName, rating, noOfTrips)); //a taxi obejct is created with the above attributes
 
 
+
                     } catch (NumberFormatException e) {
                         System.err.println("Error parsing age");
                     }
@@ -48,7 +52,14 @@ public class CSVFileReading {
         } catch (
                 IOException e) {
             System.out.println("File not found");
+
+
         }
+
+
+
+        
+
 
     }
 
@@ -97,3 +108,5 @@ public class CSVFileReading {
     } //returns list of taxis
 }
 
+
+}

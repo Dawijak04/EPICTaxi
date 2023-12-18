@@ -1,15 +1,18 @@
-package main.java.org.example;
 
-import java.util.List;
+package org.example;
+
 import java.util.Random;
 
 public class Taxi {
-    private Type type;
+    private  Type type;
     private String reg;
     private String make;
     private String model;
     private String driverName;
     private boolean available;
+
+    private int originalX;
+    private int originalY;
     private int pointX;
     private int pointY;
     private double rating;
@@ -28,25 +31,69 @@ public class Taxi {
         this.noOfTrips = noOfTrips;
     }
 
-    public static void randomTaxiGenerate(Type type) {
+
+    public static DataList<Taxi> randomTaxiGenerate( ) {
+
         DataList<Taxi> list = CSVFileReading.getTaxis();
+        DataList<Taxi> generatedTaxis = new DataList<>();
         Random rand = new Random();
+
         for (int i = 0; i < list.size(); i++) {
-            Taxi car = list.get(i);
-            car.setPointX(rand.nextInt(10));
-            car.setPointY(rand.nextInt(10));
-            if (car.getType().equals(type)) {
-                car.setAvailable(rand.nextBoolean());
-                car.setAvailable(true);
-            } else {
-                car.setAvailable(false);
+            Taxi csvTaxi = list.get(i);
+
+            int x, y;
+            do {
+
+                // Generate random coords
+                 x = rand.nextInt(10);
+                 y = rand.nextInt(10);
+            }while(LinkedGrid.isRiver(x, y) || LinkedGrid.isSpaceEmpty(x, y) || LinkedGrid.isTaxiAtPosition(x, y, generatedTaxis));
+            // Creating a new Taxi with the existing data and random generated coords
+            Taxi generatedTaxi = new Taxi(
+                    csvTaxi.getType(),
+                    csvTaxi.getReg(),
+                    csvTaxi.getMake(),
+                    csvTaxi.getModel(),
+                    csvTaxi.getDriverName(),
+                    csvTaxi.getRating(),
+                    csvTaxi.getNoOfTrips()
+            );
+            generatedTaxi.setPointX(x);
+            generatedTaxi.setPointY(y);
+
+            // Add the generated Taxi to the list
+            generatedTaxis.add(generatedTaxi);
+
+            System.out.println("Generated Taxi: Coordinates (" + x + ", " + y + "), Type: " + csvTaxi.getType() +
+                    ", Reg: " + generatedTaxi.getReg() +
+                    ", Make: " + generatedTaxi.getMake() +
+                    ", Model: " + generatedTaxi.getModel() +
+                    ", Driver Name: " + generatedTaxi.getDriverName() +
+                    ", Rating: " + generatedTaxi.getRating() +
+                    ", No. of Trips: " + generatedTaxi.getNoOfTrips());
+        }
+
+
+        return generatedTaxis;
+        }
+
+
+
+    private static boolean isSpaceOccupied(DataList<Taxi> taxis, int x, int y){
+        for(int i = 0; i < taxis.size(); i++){
+            Taxi taxi = taxis.get(i);
+            if(taxi.getPointX() == x && taxi.getPointY() == y){
+                return true;
+
             }
         }
+        return false;
     }
 
 
+
     public Type getType() {
-        return type;
+        return this.type;
     }
 
     public void setType(Type type) {
@@ -124,4 +171,19 @@ public class Taxi {
     public void setNoOfTrips(int noOfTrips) {
         this.noOfTrips = noOfTrips;
     }
+    public int getOriginalX() {
+        return originalX;
+    }
+
+    public void setOriginalX(int originalX) {
+        this.originalX = originalX;
+    }
+    public int getOriginalY() {
+        return originalX;
+    }
+
+    public void setOriginalY(int originalX) {
+        this.originalX = originalX;
+    }
+
 }

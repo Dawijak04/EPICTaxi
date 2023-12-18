@@ -1,4 +1,8 @@
-package main.java.org.example;
+
+package org.example;
+import java.util.Random;
+import java.util.Scanner;
+p
 
 import java.util.Random;
 
@@ -11,7 +15,15 @@ public class Person {
     private static Taxi assignedTaxi = CSVFileReading.getTaxis().get(15);
 
 
-    private static String assignedTaxiReg = assignedTaxi.getReg();
+
+   private static Taxi assignedTaxi ;
+    private static String assignedTaxiReg;
+
+    private int originalX;
+
+
+    private int originalY;
+
 
     private int locX;
 
@@ -23,7 +35,10 @@ public class Person {
         do {
             this.locX = rand.nextInt(gridDimension);
             this.locY = rand.nextInt(gridDimension);
-        } while (LinkedGrid.isRiver(locX, locY) || LinkedGrid.isSpaceEmpty(locX, locY));
+
+        }while(LinkedGrid.isRiver(locX, locY) || LinkedGrid.isSpaceEmpty(locX, locY));
+
+
     }
 
     public static String getAssignedTaxiReg() {
@@ -80,6 +95,73 @@ public class Person {
     public static void setRating(double r) {
         rating = r;
     }
+
+
+    public static void setAssignedTaxiByType(DataList<Taxi> taxilist,Type type){
+        DataList<Taxi>availableTaxis = getTaxisByType(taxilist, type);
+
+        if(availableTaxis.isEmpty()){
+            System.out.println("no avaiable taxis of your choosen type");
+            return;
+        }
+        int userChooses = displayAvailableTaxis(availableTaxis);
+
+        if(userChooses < 0 || userChooses>= availableTaxis.size()){
+            System.out.println("Invalid choice. Please choose a valid taxi");
+            return;
+        }
+
+        // Set the chosen taxi as the assigned taxi
+        assignedTaxi = availableTaxis. get(userChooses);
+        assignedTaxiReg = assignedTaxi.getReg();
+        }
+
+
+
+
+
+
+
+    private static DataList<Taxi> getTaxisByType(DataList<Taxi> taxilist, Type type){
+        DataList<Taxi> availableTaxis = new DataList<>();
+        for(int i = 0; i < taxilist.size(); i++){
+            Taxi taxi = taxilist.get(i);
+            if(taxi.getType() == type){
+                availableTaxis.add(taxi);
+            }
+        }
+return availableTaxis;
+
+    }
+
+
+private static int displayAvailableTaxis(DataList<Taxi> availableTaxis){
+Scanner scanner = new Scanner(System.in);
+    System.out.println("The available taxis are: ");
+    for(int i = 0; i< availableTaxis.size(); i++){
+        System.out.println(i + ". " + availableTaxis.get(i).getReg());
+
+    }
+    System.out.println("Choose a taxi by entering its number: ");
+    int choice = scanner.nextInt();;
+    return choice;
+    }
+    public int getOriginalX() {
+        return originalX;
+    }
+
+    public void setOriginalX(int originalX) {
+        this.originalX = originalX;
+    }
+    public int getOriginalY() {
+        return originalY;
+    }
+
+    public void setOriginalY(int originalY) {
+        this.originalY = originalY;
+    }
+}
+
 
     public  int getLocX() {
         return locX;
