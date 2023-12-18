@@ -67,7 +67,7 @@ public class UserInterface {
         //LinkedGrid.setShowSelectedTypeOnly(true);
 
         System.out.println("LinkedGrid created successfully.");
-        scan.close();
+        //scan.close();
 
 
     }

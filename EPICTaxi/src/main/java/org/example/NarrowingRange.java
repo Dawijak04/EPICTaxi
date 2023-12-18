@@ -2,7 +2,15 @@ package org.example;
 
 public class NarrowingRange {
 
-    private DataList<Taxi> visibleTaxis;
+    private static DataList<Taxi> visibleTaxis;
+
+    public static DataList<Taxi> getVisibleTaxis() {
+        return visibleTaxis;
+    }
+
+    public void setVisibleTaxis(DataList<Taxi> visibleTaxis) {
+        this.visibleTaxis = visibleTaxis;
+    }
 
     public NarrowingRange(){
         this.visibleTaxis = new DataList<>();

@@ -13,11 +13,11 @@ public class Main {
         LinkedGrid lg = new LinkedGrid(10);
         lg.display();
         UserInterface.routeInfo();
-        GridStateMange gridStateManager = new GridStateMange(lg , lg.generatedTaxis);
+        GridStateMange gridStateManager = new GridStateMange(lg, lg.generatedTaxis );
         gridStateManager.saveOriginalPositions();
 
         gridStateManager.displayGridWithPersonAndTaxis();
-
+        gridStateManager.narrowRangeAndDisplay();
 
 
 

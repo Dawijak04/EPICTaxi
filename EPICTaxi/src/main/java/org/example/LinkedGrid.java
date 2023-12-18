@@ -9,9 +9,8 @@ public class LinkedGrid {
     private int dimension;
 
     private Person person;
-    public DataList<Taxi> generatedTaxis;
-
-
+    public DataList<Type> addedTaxiTypes;
+    public DataList<Taxi>generatedTaxis;
 
     private boolean showSelectedTypeOnly = false;
     private Type type;
@@ -21,7 +20,7 @@ public class LinkedGrid {
 
         if (dimension > 0) {
             this.dimension = dimension;
-            int counter = 1;
+            int counter = 0;
 
             //creating the first node
             first = new Node(counter++);
@@ -75,7 +74,7 @@ public class LinkedGrid {
 
         this.generatedTaxis = Taxi.randomTaxiGenerate();
         addTaxisToGrid(generatedTaxis);
-
+        this.addedTaxiTypes = new DataList<>();
 
 
     }
@@ -160,8 +159,8 @@ public class LinkedGrid {
                     Taxi taxiAtPosition = getTaxiAtPosition(x, y, generatedTaxis);
 
                     if(taxiAtPosition != null ){
-                        System.out.print(" \uD83D\uDE95");
-
+                        System.out.print(" \uD83D\uDE95"); //taxi emoji
+                       // printTaxiEmoji(taxiAtPosition);
                     }
                     else if(isRiver(x, y)) {
 
@@ -190,7 +189,7 @@ public class LinkedGrid {
     }
 
 
-    private Taxi getTaxiAtPosition(int x, int y, DataList<Taxi> generatedTaxis){
+    public Taxi getTaxiAtPosition(int x, int y, DataList<Taxi> generatedTaxis){
         for(int i = 0; i < generatedTaxis.size(); i++){
         Taxi taxi = generatedTaxis.get(i);
             if(taxi.getPointX() == x && taxi.getPointY() == y){
@@ -259,6 +258,8 @@ if(taxi != null){
             // Check if the space is empty and not occupied by another taxi
             if (node != null && node.isEmpty() && !isTaxiAtPosition( x, y, generatedTaxis)) {
                 node.setEmpty(false);
+
+                addedTaxiTypes.add(taxi.getType());
             }
         }
     }
@@ -275,7 +276,7 @@ if(taxi != null){
             return node.getData();
         } else {
             // Handle the case where the node is null (out of bounds)
-            return -1; // You can choose a suitable default value
+            return-1 ; // You can choose a suitable default value
         }}
 
 
