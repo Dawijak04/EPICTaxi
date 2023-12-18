@@ -1,5 +1,7 @@
 package org.example;
 
+
+
 public class VehicleChoice {
 
     public static void displaySelectedType(Type type, LinkedGrid linkedGrid, DataList<Taxi> taxiList){

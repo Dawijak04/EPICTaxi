@@ -1,5 +1,7 @@
 package org.example;
 
+
+
 public class NarrowingRange {
 
     private DataList<Taxi> visibleTaxis;

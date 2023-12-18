@@ -1,7 +1,7 @@
 
 package org.example;
 
-import java.util.*;
+
 
 
 public class LinkedGrid {
@@ -145,8 +145,8 @@ public class LinkedGrid {
 
     public void display() { //method to display the linked grid
 
-        Node temp = first;
-        Node rowMarker = first;
+       Node temp = first;
+       Node rowMarker = first;
 
         while (rowMarker != null) { //loop through rows
             while (temp != null) { // loop through columns

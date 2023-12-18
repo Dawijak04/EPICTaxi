@@ -1,10 +1,11 @@
 
 package org.example;
 
+
 import java.util.Random;
 
 public class Taxi {
-    private  Type type;
+    private Type type;
     private String reg;
     private String make;
     private String model;

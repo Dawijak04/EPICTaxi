@@ -1,5 +1,7 @@
 package org.example;
 
+
+
 public class DataHashMap<K, V> {
 
 

@@ -1,10 +1,9 @@
 
 package org.example;
+
+
 import java.util.Random;
 import java.util.Scanner;
-
-
-import java.util.Random;
 
 
 public class Person {
@@ -97,8 +96,8 @@ public class Person {
     }
 
 
-    public static void setAssignedTaxiByType(DataList<Taxi> taxilist,Type type){
-        DataList<Taxi>availableTaxis = getTaxisByType(taxilist, type);
+    public static void setAssignedTaxiByType(DataList<Taxi> taxilist, Type type){
+        DataList<Taxi> availableTaxis = getTaxisByType(taxilist, type);
 
         if(availableTaxis.isEmpty()){
             System.out.println("no avaiable taxis of your choosen type");

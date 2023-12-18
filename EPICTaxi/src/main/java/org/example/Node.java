@@ -1,5 +1,6 @@
 package org.example;
 
+
 public class Node {
     private Taxi taxi;
     private boolean originalEmpty;
