@@ -116,7 +116,7 @@ public class LinkedGrid {
         return false;
     }
 
-    private Node getNodeAt(int x, int y) {
+    public Node getNodeAt(int x, int y) {
         Node temp = first;
         for (int i = 0; i < y; i++) {
             temp = temp.getDown();
