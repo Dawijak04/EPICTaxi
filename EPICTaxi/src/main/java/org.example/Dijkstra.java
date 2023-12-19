@@ -4,7 +4,6 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class Dijkstra {
-    //private static LinkedGrid lg = new LinkedGrid(10);
     private static Node first = Main.getLg().getFirst();
 
     public static DataList<Node> dijkstraShortestPath(Node start, Node end) {
@@ -51,22 +50,22 @@ public class Dijkstra {
     public static DataList<Node> getNeighbors(Node node) {
         DataList<Node> neighbors = new DataList(); //create new list
 
-        // Check if there is a node to the right and its not empty and not a river
+        // checks if there is a node to the right and its not empty and not a river
         if (node.getRight() != null && !node.getRight().isEmpty() && !isRiver(node.getRight())) {
             neighbors.add(node.getRight());
         }
 
-        // Check if there is a node to the down and its not empty and not a river
+        // checks if there is a node to the down and its not empty and not a river
         if (node.getDown() != null && !node.getDown().isEmpty() && !isRiver(node.getDown())) {
             neighbors.add(node.getDown());
         }
 
-        // Check if there is a node to the left and its not empty and not a river
+        // checks if there is a node to the left and its not empty and not a river
         if (node.getLeft() != null && !node.getLeft().isEmpty() && !isRiver(node.getLeft())) {
             neighbors.add(node.getLeft());
         }
 
-        // Check if there is a node to the up and its not empty and not a river
+        // checks if there is a node to the up and its not empty and not a river
         if (node.getUp() != null && !node.getUp().isEmpty() && !isRiver(node.getUp())) {
             neighbors.add(node.getUp());
         }

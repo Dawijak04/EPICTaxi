@@ -12,20 +12,15 @@ public class CSVFileReading {
 
 
     public static void readTaxiCSV() {
-
         try (
                 BufferedReader reader = new BufferedReader(new FileReader(csvPath))) { //buffered reader reads file at csvPath
             String line;
-
 
             while ((line = reader.readLine()) != null) { //while file isn't finsihed
 
                 String[] data = line.split(","); //split csv line into a string array
 
-
                 if (data.length >= 7) { // Ensure there are at least 7 columns
-
-
 
                     try {
                         Type type = Type.valueOf(data[0].trim()); //first value is assgined as Type
@@ -36,10 +31,7 @@ public class CSVFileReading {
                         double rating = Double.parseDouble(data[5].trim()); //sixth value is assigned as drivers rating and parsed into a double
                         int noOfTrips = Integer.parseInt(data[6].trim()); //seventh value is assigned as the dirvers number of trip and parsed into an integer
 
-
                         taxiList.add(new Taxi(type, reg, make, model, driverName, rating, noOfTrips)); //a taxi obejct is created with the above attributes
-
-
 
                     } catch (NumberFormatException e) {
                         System.err.println("Error parsing age");
@@ -47,20 +39,11 @@ public class CSVFileReading {
                 } else {
                     System.err.println("Invalid data format: " + line);
                 }
-
             }
         } catch (
                 IOException e) {
             System.out.println("File not found");
-
-
         }
-
-
-
-
-
-
     }
 
     public static void updateRating() {
