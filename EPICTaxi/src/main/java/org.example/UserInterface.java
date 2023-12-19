@@ -90,7 +90,7 @@ public class UserInterface {
             }
         }
         CSVFileReading.updateRating(); //update the drivers rating
-        System.out.println("Thank you for choosing EcoTaxi");
+        System.out.println("Thank you for choosing Planet Taxi");
         scan.close();
     }
 
