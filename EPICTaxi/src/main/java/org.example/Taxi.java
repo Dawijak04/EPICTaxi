@@ -47,7 +47,7 @@ public class Taxi {
                 // Generate random coords
                 x = rand.nextInt(10);
                 y = rand.nextInt(10);
-            }while(LinkedGrid.isRiver(x, y) || LinkedGrid.isSpaceEmpty(x, y) || LinkedGrid.isTaxiAtPosition(x, y, generatedTaxis));
+            }while(LinkedGrid.isRiver(x, y) || LinkedGrid.isSpaceEmpty(x, y) || LinkedGrid.isTaxiAtPosition(x, y, generatedTaxis) || ((Person.getLocX() == x) && (Person.getLocY() == y)) );///////////////
             // Creating a new Taxi with the existing data and random generated coords
             Taxi generatedTaxi = new Taxi(
                     csvTaxi.getType(),

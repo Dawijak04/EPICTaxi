@@ -52,7 +52,7 @@ public class UserInterface {
             }
         }
 
-        while (Person.getNumberPassengers() > 4) { //checks for invalid inputs
+        while (Person.getNumberPassengers() > 4 || Person.getNumberPassengers() < 1) { //checks for invalid inputs
             System.out.println("How many passengers will there be?");
             Person.setNumberPassengers(scan.nextInt());
             if (Person.getNumberPassengers() > 4) { //informs user of invalid inputs
