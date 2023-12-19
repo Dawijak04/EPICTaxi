@@ -1,25 +1,27 @@
-package main.java.org.example;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.PriorityQueue;
+package org.example;
+
+import java.util.*;
+
 
 public class LinkedGrid {
     private Node first;
     private int dimension;
-    private Person person;
 
+    private Person person;
+    public DataList<Type> addedTaxiTypes;
+    public DataList<Taxi>generatedTaxis;
+
+    private boolean showSelectedTypeOnly = false;
+    private Type type;
+    private Node[][] nodes;
 
     public LinkedGrid(int dimension) { //gotta give the grid a size
+        CSVFileReading.readTaxiCSV();
 
         if (dimension > 0) {
-
             this.dimension = dimension;
-            int counter = 1;
+            int counter = 0;
 
             //creating the first node
             first = new Node(counter++);
@@ -55,19 +57,31 @@ public class LinkedGrid {
                     columnMarker = columnMarker.getRight();
                 }
 
+
+
+
             }
         }
         markNodesAsEmpty();
 
 
+
         //intialising the person with random coordiantes
         this.person = new Person(10);
-        int personX = this.person.getLocX();
-        int personY = this.person.getLocY();
-
+        int personX = Person.getLocX();
+        int personY = Person.getLocY();
         getNodeAt(personX, personY).setEmpty(false);
 
+
+        this.generatedTaxis = Taxi.randomTaxiGenerate();
+        addTaxisToGrid(generatedTaxis);
+        this.addedTaxiTypes = new DataList<>();
+
+
     }
+
+
+
 
     public static boolean isSpaceEmpty(int x, int y) {
         int[][] emptyNodes = {
@@ -136,19 +150,32 @@ public class LinkedGrid {
 
         while (rowMarker != null) { //loop through rows
             while (temp != null) { // loop through columns
-                if (temp.isEmpty()) {
-                    System.out.print("\u001B[32m - \u001B[0m"); //ANSI escape code for green
-                } else {
+                if (!temp.isEmpty()) {
                     int x = temp.getData() % dimension;
                     int y = temp.getData() / dimension;
+                    // In display method
 
-                    if (isRiver(x, y)) {
+
+
+                    Taxi taxiAtPosition = getTaxiAtPosition(x, y, generatedTaxis);
+
+                    if(taxiAtPosition != null ){
+                        System.out.print(" \uD83D\uDE95"); //taxi emoji
+                        // printTaxiEmoji(taxiAtPosition);
+                    }
+                    else if(isRiver(x, y)) {
+
                         System.out.print("\u001B[34m ~ \u001B[0m"); // ANSI escape codes to make it blue
-                    } else if (x == person.getLocX() && y == person.getLocY()) {
+                    } else if (x == Person.getLocX() && y == Person.getLocY()) {//////////////////////////////////
                         System.out.print("\uD83E\uDDCD"); // unicode for a peron emoji
                     } else {
                         System.out.printf("%3d", temp.getData()); //spaces out all parts of grid so all nodes are aligned
                     }
+
+
+                } else{
+                    System.out.print("\u001B[32m - \u001B[0m");
+
                 }
                 temp = temp.getRight();
 
@@ -157,65 +184,24 @@ public class LinkedGrid {
             System.out.println();
             temp = rowMarker.getDown();
             rowMarker = temp;
+
+
         }
     }
 
 
-    public List<Node> dijkstraShortestPath(Node start, Node end) {
-        Map<Node, Double> distanceMap = new HashMap<>();
-        Map<Node, Node> predecessorMap = new HashMap<>();
-        PriorityQueue<Node> priorityQueue = new PriorityQueue<>(Comparator.comparingDouble(distanceMap::get));
-
-        distanceMap.put(start, 0.0);
-        priorityQueue.add(start);
-
-        while (!priorityQueue.isEmpty()) {
-            Node current = priorityQueue.poll();
-
-            for (Node neighbor : getNeighbors(current)) {
-                double newDistance = distanceMap.get(current) + getDistance(current, neighbor);
-
-                if (!distanceMap.containsKey(neighbor) || newDistance < distanceMap.get(neighbor)) {
-                    distanceMap.put(neighbor, newDistance);
-                    predecessorMap.put(neighbor, current);
-                    priorityQueue.add(neighbor);
-                }
+    public Taxi getTaxiAtPosition(int x, int y, DataList<Taxi> generatedTaxis){
+        for(int i = 0; i < generatedTaxis.size(); i++){
+            Taxi taxi = generatedTaxis.get(i);
+            if(taxi.getPointX() == x && taxi.getPointY() == y){
+                return taxi;
             }
         }
-
-        return buildPath(start, end, predecessorMap);
+        return null;
     }
 
-    private List<Node> buildPath(Node start, Node end, Map<Node, Node> predecessorMap) {
-        List<Node> path = new ArrayList<>();
-        Node current = end;
 
-        while (current != null) {
-            path.add(current);
-            current = predecessorMap.get(current);
-        }
 
-        Collections.reverse(path);
-
-        return path;
-    }
-
-    private List<Node> getNeighbors(Node node) {
-        List<Node> neighbors = new ArrayList<>();
-
-        if (node.getRight() != null && !node.getRight().isEmpty()) {
-            neighbors.add(node.getRight());
-        }
-        if (node.getDown() != null && !node.getDown().isEmpty()) {
-            neighbors.add(node.getDown());
-        }
-
-        return neighbors;
-    }
-
-    private double getDistance(Node node1, Node node2) {
-        return 1.0;
-    }
 
 
     public Node getFirst() {
@@ -223,7 +209,58 @@ public class LinkedGrid {
     }
 
 
-}
+    public static boolean isTaxiAtPosition( int x, int y, DataList<Taxi> generatedTaxis){
+        for(int i = 0; i < generatedTaxis.size(); i ++){
+            Taxi taxi =generatedTaxis.get(i);
+            if (taxi.getPointX() == x && taxi.getPointY() == y){
+                return true;
+            }
+        }
+        return false;
+    }
 
+
+    public void setShowSelectedTypeOnly(boolean showSelectedTypeOnly){
+        this.showSelectedTypeOnly = showSelectedTypeOnly;
+    }
+
+
+
+    public void addTaxisToGrid( DataList<Taxi> generatedTaxis ) {
+        for (int i = 0; i < generatedTaxis.size(); i++) {
+            Taxi taxi = generatedTaxis.get(i);
+            int x = taxi.getPointX();
+            int y = taxi.getPointY();
+            Node node = getNodeAt(x, y);
+
+
+            // Checking if the space is empty and not occupied by another taxi
+            if (node != null && node.isEmpty() && !isTaxiAtPosition( x, y, generatedTaxis)) {
+                node.setEmpty(false);
+
+                addedTaxiTypes.add(taxi.getType());
+            }
+        }
+    }
+    public Person getPerson() {
+        return person;
+    }
+
+    public int getSize(){
+        return dimension;
+    }
+    public int getData(int x, int y) {
+        Node node = getNodeAt(x, y);
+        if (node != null) {
+            return node.getData();
+        } else {
+            // Handles the case where the node is null
+            return-1 ;
+        }}
+
+
+
+
+}
 
 
