@@ -8,7 +8,7 @@ WheelchairAccesible,152-OY-749,Volskwagen,Caddy,Jake,4.1,261
 WheelchairAccesible,181-MN-852,Citroen,Berlingo,Mike,2.4,159
 Premium,211-LS-560,BMW,7 Series,Patrick,3.9,168
 Regular,161-D-23509,Mazda,6,Harvey,4.979,293
-Regular,12-SO-9563,Skoda,Superb,Harry,1.7,371
+Regular,12-SO-9563,Skoda,Superb,Harry,1.698,372
 Regular,172-KE-469,Kia,Sorento,Charlie,3.8,132
 Regular,201-TN-263,Nissan,Quashqai,James,2.914,151
 WheelchairAccesible,182-KY-858,Renault,Kangoo,Ryan,4.199,184
