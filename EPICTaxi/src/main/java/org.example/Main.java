@@ -5,22 +5,14 @@ package org.example;
 public class Main {
     public static  LinkedGrid lg = new LinkedGrid(10);
     public static void main(String[] args)  {
-        //CSVFileReading.readTaxiCSV();
-
-
 
         UserInterface.welcome();
-        //LinkedGrid lg = new LinkedGrid(10);
         lg.display();
 
         UserInterface.routeInfo();
         GridStateMange gridStateManager = new GridStateMange(lg, lg.generatedTaxis );
 
         gridStateManager.narrowRangeAndDisplay();
-
-
-
-
 
 
 
