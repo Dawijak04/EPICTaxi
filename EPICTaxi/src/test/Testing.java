@@ -44,7 +44,7 @@ public class Testing  implements VehicleHiringTest {
         String gridOutput = outputStream.toString();
 
 
-        assertTrue(outputStream.toString().contains(" \uD83D\uDE95"));
+        assertTrue(gridOutput.contains(" \uD83D\uDE95"));
 
     }
 
