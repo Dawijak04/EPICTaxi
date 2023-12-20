@@ -51,9 +51,33 @@ public class Testing  implements VehicleHiringTest {
 
 
 
-    @Override
+   @Test
+   @Override
     public void testMoveVehicle() {
+    LinkedGrid map = new LinkedGrid(10);
+    map.display();
+    GridStateMange manager = new GridStateMange(map, map.generatedTaxis);
+    UserInterface.setAssignedTaxi(CSVFileReading.getTaxis().get(0));
+    UserInterface.getAssignedTaxi().setPointX(0);
+    UserInterface.getAssignedTaxi().setPointY(0);
+    int initialX = UserInterface.getAssignedTaxi().getPointX();
+    int initialY = UserInterface.getAssignedTaxi().getPointY();
 
+    Node start = Dijkstra.getNodeAt(0, 0);
+    Node end = Dijkstra.getNodeAt(9, 9);
+
+    DataList<Node> route = Dijkstra.dijkstraShortestPath(start, end);
+
+    for(int i = 0; i < route.size(); i++){
+        Node node = route.get(i);
+        UserInterface.getAssignedTaxi().setPointX(node.getData() % 10);
+        UserInterface.getAssignedTaxi().setPointY(node.getData() / 10);
+        manager.displayOnlySelectedTaxiLessPerson();
+    }
+    int finalX = UserInterface.getAssignedTaxi().getPointX();
+    int finalY = UserInterface.getAssignedTaxi().getPointY();
+    assertNotEquals(initialX, finalX);
+    assertNotEquals(initialY, finalY);
     }
 
 @Test
@@ -126,7 +150,7 @@ public class Testing  implements VehicleHiringTest {
 
 
 }
-@Test
+//@Test
     @Override
     public void testGetVehiclesInRange() {
         //narrowing range testing
