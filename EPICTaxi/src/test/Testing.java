@@ -4,6 +4,7 @@ import org.junit.Test;
 import static org.example.Type.Premium;
 import static org.example.Type.Regular;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import java.io.*;
 import static org.junit.Assert.*;
 import java.util.ArrayList;
