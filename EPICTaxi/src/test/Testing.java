@@ -43,7 +43,7 @@ public class Testing  implements VehicleHiringTest {
         lg.display();
         String gridOutput = outputStream.toString();
 
-
+        System.out.println("Grid Output: " + gridOutput);
         assertTrue(gridOutput.matches(".*\\s*\\uD83D\\uDE95\\s*.*"));
 
     }
