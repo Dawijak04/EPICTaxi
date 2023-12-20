@@ -1,81 +1,75 @@
 package org.example;
 
 import java.util.Arrays;
-import java.util.Iterator;
+
 
 public class DataList<T> {
-    private int defaultSize = 10;
-    private Object[] elements;
-    private int size;
+    private int defaultSize = 10; //default size
+    private Object[] elements; //array to store elements
+    private int size; //number of elements in list
 
-    public DataList() {
+    public DataList() { //constructor
         elements = new Object[defaultSize];
         size = 0;
     }
 
     public int size() {
         return size;
-    }
+    } //gets current size of list
 
     public boolean isEmpty() {
         return size == 0;
+    } //checks if list is empty
+
+    public void add(T element) { //adds elements to list
+        ensureCapacity(); //ensures capacity
+        elements[size++] = element; //adds element to end of list
     }
 
-    public void add(T element) {
-        ensureCapacity();
-        elements[size++] = element;
-    }
 
-
-    private void ensureCapacity() {
-        if (size == elements.length) {
-            int newCapacity = elements.length * 2;
+    private void ensureCapacity() { //ensures that array has enough capacity
+        if (size == elements.length) { //checks if size is equal to array length
+            int newCapacity = elements.length * 2; //doubles capacity
             elements = Arrays.copyOf(elements, newCapacity);
         }
     }
 
-    public void reverse() {
+    public void reverse() { //reverses elements in list
         int left = 0;
         int right = size - 1;
 
-        while (left < right) {
+        while (left < right) { //repeats until list is reversed
             // Swap elements at left and right indices
-            Object temp = elements[left];
-            elements[left] = elements[right];
-            elements[right] = temp;
+            Object temp = elements[left]; //left element stored in temp variable
+            elements[left] = elements[right]; //left element set to right element
+            elements[right] = temp; //right element set to temp variable (left element)
 
             // Move indices towards the center
-            left++;
-            right--;
+            left++; //left is incremented
+            right--; //right is decremented
         }
     }
 
     @SuppressWarnings("unchecked")
-    public T get(int index) {
-        if (index < 0 || index >= size) {
-
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+    public T get(int index) { //gets element at specific index
+        if (index < 0 || index >= size) { //checks if index is out of bounds
+            throw new IndexOutOfBoundsException("index: " + index + ", size: " + size + ". Index doesnt exist"); //throws exception
         }
-        return (T) elements[index];
+        return (T) elements[index]; //returns element at given index
     }
 
-    public void set(int index, T element) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+    public void set(int index, T element) { //sets element to a specified index in list
+        if (index < 0 || index >= size) { //if out of bounds
+            throw new IndexOutOfBoundsException("index: " + index + ", size: " + size + ". Index doesnt exist"); //throws exception
         }
-        elements[index] = element;
+        elements[index] = element; //sets element to given index
     }
 
-    public void remove(int index) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+    public void remove(int index) { //removes element of specified index
+        if (index < 0 || index >= size) { //checks if index is out of bounds
+            throw new IndexOutOfBoundsException("index: " + index + ", size: " + size + ". Index doesnt exist"); //throws exception
         }
-
-        // Shift elements to the left to remove the element at the specified index
-        System.arraycopy(elements, index + 1, elements, index, size - index - 1);
-        elements[--size] = null; // Set the last element to null and decrease size
-
+        System.arraycopy(elements, index + 1, elements, index, size - index - 1); //pushes all elements to the left and the element at specified index is overwritten by the following element
+        elements[--size] = null; // set the last element to null
     }
-
-
 }

@@ -16,7 +16,6 @@ public class UserInterface {
 
     public static void welcome(){
         System.out.println("Welcome to PlanetTaxi");
-
         System.out.println("Every trip you take, will plant a tree to save the planet");
     }
 
@@ -60,37 +59,25 @@ public class UserInterface {
             }
         }
 
-        //scan.close();
-        //  LinkedGrid lg = new LinkedGrid(10);
-
-
-        // LinkedGrid.display();
-        //Person.setAssignedTaxiByType(CSVFileReading.getTaxis(), Person.getType());
-        //LinkedGrid.setShowSelectedTypeOnly(true);
-
-
-        //scan.close();
-
-
     }
 
     public static void endMessage() { //message displayed at end of trip
         Scanner scan = new Scanner(System.in);
-        double totalFare = Fare + 0.25;
+        double totalFare = Fare + 0.25; //additional 25c for carbon tax
         if (UserInterface.getAssignedTaxi().getType().equals(Type.Premium)) {
-            totalFare = totalFare*2;
+            totalFare = totalFare*2; //price double for premium trips
 
         }
-        System.out.println("The fare for this ride was: $" + Fare);
+        System.out.println("The fare for this ride was: $" + totalFare);
         System.out.println("Please give your driver a rating between 1 and 5");
-        while (Person.getRating() < 1 || Person.getRating() > 5) {
+        while (Person.getRating() < 1 || Person.getRating() > 5) { //checks for invalid inputs
             Person.setRating(scan.nextDouble());
             if (Person.getRating() < 1 || Person.getRating() > 5) {
                 System.out.println("Invalid input, please try again");
             }
         }
         CSVFileReading.updateRating(); //update the drivers rating
-        System.out.println("Thank you for choosing EcoTaxi");
+        System.out.println("Thank you for choosing Planet Taxi");
         scan.close();
     }
 

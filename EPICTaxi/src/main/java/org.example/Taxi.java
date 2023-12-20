@@ -18,7 +18,7 @@ public class Taxi {
     private double rating;
     private int noOfTrips;
     private boolean isVisible;
-    public Taxi(Type type, String reg, String make, String model, String driverName, double rating, int noOfTrips) {
+    public Taxi(Type type, String reg, String make, String model, String driverName, double rating, int noOfTrips) { //construcotr of taxi
         this.type = type;
         this.reg = reg;
         this.make = make;
@@ -32,22 +32,22 @@ public class Taxi {
     }
 
 
-    public static DataList<Taxi> randomTaxiGenerate( ) {
+    public static DataList<Taxi> randomTaxiGenerate( ) { //randomly assigns coordinates to available taxis
 
-        DataList<Taxi> list = CSVFileReading.getTaxis();
-        DataList<Taxi> generatedTaxis = new DataList<>();
-        Random rand = new Random();
+        DataList<Taxi> list = CSVFileReading.getTaxis(); //list of all taxis
+        DataList<Taxi> generatedTaxis = new DataList<>(); //new list
+        Random rand = new Random(); //random
 
-        for (int i = 0; i < list.size(); i++) {
-            Taxi csvTaxi = list.get(i);
+        for (int i = 0; i < list.size(); i++) { //iterates through all the taxis
+            Taxi csvTaxi = list.get(i); //takes current
 
-            int x, y;
+            int x, y; //coordinates
             do {
 
                 // Generate random coords
                 x = rand.nextInt(10);
                 y = rand.nextInt(10);
-            }while(LinkedGrid.isRiver(x, y) || LinkedGrid.isSpaceEmpty(x, y) || LinkedGrid.isTaxiAtPosition(x, y, generatedTaxis) || ((Person.getLocX() == x) && (Person.getLocY() == y)) );///////////////
+            }while(LinkedGrid.isRiver(x, y) || LinkedGrid.isSpaceEmpty(x, y) || LinkedGrid.isTaxiAtPosition(x, y, generatedTaxis) || ((Person.getLocX() == x) && (Person.getLocY() == y)) );//doesnt generate taxis where theres grass, water or a person
             // Creating a new Taxi with the existing data and random generated coords
             Taxi generatedTaxi = new Taxi(
                     csvTaxi.getType(),
@@ -58,19 +58,15 @@ public class Taxi {
                     csvTaxi.getRating(),
                     csvTaxi.getNoOfTrips()
             );
-            generatedTaxi.setPointX(x);
-            generatedTaxi.setPointY(y);
+            generatedTaxi.setPointX(x); //sets x coordinate
+            generatedTaxi.setPointY(y); //sets y coordinate
 
             // Add the generated Taxi to the list
             generatedTaxis.add(generatedTaxi);
 
         }
-
-
-        return generatedTaxis;
+        return generatedTaxis; //return list of generated taxis
     }
-
-
 
     private static boolean isSpaceOccupied(DataList<Taxi> taxis, int x, int y){
         for(int i = 0; i < taxis.size(); i++){
@@ -82,8 +78,6 @@ public class Taxi {
         }
         return false;
     }
-
-
 
     public Type getType() {
         return this.type;
