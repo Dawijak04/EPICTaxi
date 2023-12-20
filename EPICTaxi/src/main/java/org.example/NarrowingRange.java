@@ -14,10 +14,10 @@ public class NarrowingRange {
         visibleTaxis = new DataList<>();
     }
 
-    public static void narrowRange(DataList<Taxi> allTaxis, Person person, int distance){
+    public static void narrowRange(DataList<Taxi> visibleTaxis, Person person, int distance){
         visibleTaxis = new DataList<>();
-        for(int i = 0; i < allTaxis.size(); i++){
-            Taxi taxi = allTaxis.get(i);
+        for(int i = 0; i < visibleTaxis.size(); i++){
+            Taxi taxi = visibleTaxis.get(i);
             if(InNarrowRange(person, taxi , 5) <= distance){
                 visibleTaxis.add(taxi);
             }

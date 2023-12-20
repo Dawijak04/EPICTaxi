@@ -11,25 +11,8 @@ public class GridStateMange {
         this.generatedTaxis = generatedTaxis;
         this.narrowingRange = new NarrowingRange();
     }
-    public void saveOriginalPositions() {
-
-        for (int i = 0; i < generatedTaxis.size(); i++) {
-            Taxi taxi = generatedTaxis.get(i);
-            taxi.setOriginalX(taxi.getPointX());
-            taxi.setOriginalY(taxi.getPointY());
-        }
-
-        Person person = linkedGrid.getPerson();
-        person.setOriginalX(person.getLocX());
-        person.setOriginalY(person.getLocY());
-    }
-
-    public void restorePersonLocation() {
-        Person person = linkedGrid.getPerson();
-        person.setLocX(person.getOriginalX());
-        person.setLocY(person.getOriginalY());
-    }
-    public DataList<Taxi> displayGridWithPersonAndTaxis() {
+    // Method to display the grid with the person and taxis based on the selected type
+    public DataList<Taxi> displayGridWithPersonAndTaxis() {// List to store visible taxis based on the selected type
         Person person = linkedGrid.getPerson();
         Type selectedType = Person.getType();
 
@@ -59,7 +42,7 @@ public class GridStateMange {
         return visibleTaxis;
     }
 
-    private Taxi getTaxiAtPosition(int x, int y) {
+    private Taxi getTaxiAtPosition(int x, int y) { // Method to get the taxi at a specific position in the grid
         for (int i = 0; i < generatedTaxis.size(); i++) {
             Taxi taxi = generatedTaxis.get(i);
             if (taxi.getPointX() == x && taxi.getPointY() == y) {
@@ -69,7 +52,7 @@ public class GridStateMange {
         return null;
     }
 
-    private boolean isTaxiInGeneratedTaxis(Taxi taxiToCheck) {
+    private boolean isTaxiInGeneratedTaxis(Taxi taxiToCheck) {// Method to check if a taxi is in the generated taxis list
         for (int i = 0; i < generatedTaxis.size(); i++) {
             Taxi taxi = generatedTaxis.get(i);
             if (taxi.equals(taxiToCheck)) {
@@ -78,16 +61,18 @@ public class GridStateMange {
         }
         return false;
     }
-    public void narrowRangeAndDisplay() {
+    public void narrowRangeAndDisplay() {// Method to narrow the range of taxis and display the grid with person and taxis
+        narrowingRange.narrowRange(generatedTaxis, linkedGrid.getPerson(), 5);
         DataList<Taxi> visibleTaxis = displayGridWithPersonAndTaxis();
         if (!visibleTaxis.isEmpty()) {
+            // Displaying information about visible taxis and allowing the user to select one
             for (int i = 0; i < visibleTaxis.size(); i++) {
                 Taxi taxi = visibleTaxis.get(i);
                 System.out.println("Taxi " + i + ": " +" Driver " + taxi.getDriverName() + " in the " + taxi.getMake());
             }
             Scanner scanner = new Scanner(System.in);
             int selectedTaxiIndex;
-
+            // Prompting the user to select a taxi until a valid index is entered
             do{
                 System.out.print("Select a taxi (enter the taxi number): ");
                 while (!scanner.hasNextInt()) {
@@ -101,18 +86,19 @@ public class GridStateMange {
                 }
             } while (selectedTaxiIndex < 0 || selectedTaxiIndex >= visibleTaxis.size());
 
-            for (int i = 0; i < visibleTaxis.size(); i++) {
+            for (int i = 0; i < visibleTaxis.size(); i++) {// Marking the selected taxi as visible
                 Taxi taxi = visibleTaxis.get(i);
                 taxi.setVisible(i == selectedTaxiIndex);
             }
-
+            // Displaying the grid with the person and the selected taxi
             displayGridWithPersonAndSelectedTaxi(visibleTaxis.get(selectedTaxiIndex));
+            // Setting the selected taxi in the user interface
             UserInterface.setAssignedTaxi((visibleTaxis.get(selectedTaxiIndex)));
         } else {
             System.out.println("No taxis available in the narrowed range.");
         }
     }
-    private void displayGridWithPersonAndSelectedTaxi(Taxi selectedTaxi) {
+    private void displayGridWithPersonAndSelectedTaxi(Taxi selectedTaxi) {// Method to display the grid with the person and the selected taxi
         Type selectedType = Person.getType();
 
         for (int y = 0; y < linkedGrid.getSize(); y++) {

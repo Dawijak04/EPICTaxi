@@ -3,21 +3,20 @@ package org.example;
 
 
 public class LinkedGrid {
-    private Node first;
-    private int dimension;
+    private Node first; //this is the first node in the grid
+    private int dimension; //size of the grid
 
     private Person person;
     public DataList<Type> addedTaxiTypes;
     public DataList<Taxi>generatedTaxis;
 
-    private boolean showSelectedTypeOnly = false;
     private Type type;
     private Node[][] nodes;
 
     public LinkedGrid(int dimension) { //gotta give the grid a size
-        CSVFileReading.readTaxiCSV();
+        CSVFileReading.readTaxiCSV(); //reads taxis from the csv file
 
-        if (dimension > 0) {
+        if (dimension > 0) { //checks if size is greater than 0
             this.dimension = dimension;
             int counter = 0;
 
@@ -60,7 +59,7 @@ public class LinkedGrid {
 
             }
         }
-        markNodesAsEmpty();
+        markNodesAsEmpty(); //marking nodes as empty
 
 
 
@@ -70,7 +69,7 @@ public class LinkedGrid {
         int personY = Person.getLocY();
         getNodeAt(personX, personY).setEmpty(false);
 
-
+//creating random taxis and adding them tto the grid
         this.generatedTaxis = Taxi.randomTaxiGenerate();
         addTaxisToGrid(generatedTaxis);
         this.addedTaxiTypes = new DataList<>();
@@ -81,7 +80,7 @@ public class LinkedGrid {
 
 
 
-    public static boolean isSpaceEmpty(int x, int y) {
+    public static boolean isSpaceEmpty(int x, int y) { //this makes the empty nodes
         int[][] emptyNodes = {
                 {2, 2},  // node 12 (x,y)
                 {2, 3}, {9, 6}, {9, 7}, {1, 7}, {2, 7}, {3, 7}, {1, 9}, {2, 9}, {3, 9}, {5, 9}, {6, 9}, {7, 9},
@@ -89,7 +88,7 @@ public class LinkedGrid {
 
 
         };
-        for (int[] node : emptyNodes) {
+        for (int[] node : emptyNodes) { //checks if the given co ords match any other predefined empty nodes
             if (x == node[0] - 1 && y == node[1] - 1) { //checks if x is first element -1, y is second element -1
                 return true;
             }
@@ -97,7 +96,7 @@ public class LinkedGrid {
         return false;
     }
 
-    public static boolean isRiver(int x, int y) { //x = f, g =y
+    public static boolean isRiver(int x, int y) { //makes a river
         int[][] river = {
                 //nodes that i want to be a river , its one line across with two spaces for bridges
                 {2, 4}, {3, 4}, {5, 4}, {6, 4}, {7, 4}, {9, 4}, {10, 4}, {11, 4},
@@ -105,7 +104,7 @@ public class LinkedGrid {
 
 
         };
-        for (int[] node : river) {
+        for (int[] node : river) { // Checking if the given coordinates match any predefined river nodes
             if (x == node[0] - 1 && y == node[1] - 1) {
                 return true;
             }
@@ -114,7 +113,7 @@ public class LinkedGrid {
         return false;
     }
 
-    public Node getNodeAt(int x, int y) {
+    public Node getNodeAt(int x, int y) { //method to get the node at given co ords in the grid
         Node temp = first;
         for (int i = 0; i < y; i++) {
             temp = temp.getDown();
@@ -125,7 +124,7 @@ public class LinkedGrid {
         return temp;
     }
 
-    private void markNodesAsEmpty() {
+    private void markNodesAsEmpty() { // Method to mark nodes as empty based on predefined conditions
         Node rowMarker = first;
 
         for (int y = 0; y < dimension; y++) { //looping through the rows
@@ -188,7 +187,7 @@ public class LinkedGrid {
     }
 
 
-    public Taxi getTaxiAtPosition(int x, int y, DataList<Taxi> generatedTaxis){
+    public Taxi getTaxiAtPosition(int x, int y, DataList<Taxi> generatedTaxis){ // Method to get the taxi at a specific position in the grid
         for(int i = 0; i < generatedTaxis.size(); i++){
             Taxi taxi = generatedTaxis.get(i);
             if(taxi.getPointX() == x && taxi.getPointY() == y){
@@ -206,7 +205,7 @@ public class LinkedGrid {
         return first;
     }
 
-
+    // Method to check if there is a taxi at a specific position in the grid
     public static boolean isTaxiAtPosition( int x, int y, DataList<Taxi> generatedTaxis){
         for(int i = 0; i < generatedTaxis.size(); i ++){
             Taxi taxi =generatedTaxis.get(i);
@@ -218,9 +217,7 @@ public class LinkedGrid {
     }
 
 
-    public void setShowSelectedTypeOnly(boolean showSelectedTypeOnly){
-        this.showSelectedTypeOnly = showSelectedTypeOnly;
-    }
+
 
 
 

@@ -14,8 +14,9 @@ public class Main {
         lg.display();
 
         UserInterface.routeInfo();
-        GridStateMange gridStateManager = new GridStateMange(lg, lg.generatedTaxis );
 
+
+        GridStateMange gridStateManager = new GridStateMange(lg, lg.generatedTaxis );
         gridStateManager.narrowRangeAndDisplay();
 
 

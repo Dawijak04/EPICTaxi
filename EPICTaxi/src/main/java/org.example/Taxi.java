@@ -34,12 +34,12 @@ public class Taxi {
 
     public static DataList<Taxi> randomTaxiGenerate( ) {
 
-        DataList<Taxi> list = CSVFileReading.getTaxis();
-        DataList<Taxi> generatedTaxis = new DataList<>();
-        Random rand = new Random();
+        DataList<Taxi> list = CSVFileReading.getTaxis(); //gets the list of existing taxis from the CSV file
+        DataList<Taxi> generatedTaxis = new DataList<>(); //creates a new list to store the generated taxis in
+        Random rand = new Random(); //initialises a random number generator
 
-        for (int i = 0; i < list.size(); i++) {
-            Taxi csvTaxi = list.get(i);
+        for (int i = 0; i < list.size(); i++) { //loops through taxi list
+            Taxi csvTaxi = list.get(i); // gets a taxi from the list
 
             int x, y;
             do {
@@ -47,7 +47,10 @@ public class Taxi {
                 // Generate random coords
                 x = rand.nextInt(10);
                 y = rand.nextInt(10);
+
             }while(LinkedGrid.isRiver(x, y) || LinkedGrid.isSpaceEmpty(x, y) || LinkedGrid.isTaxiAtPosition(x, y, generatedTaxis) || ((Person.getLocX() == x) && (Person.getLocY() == y)) );///////////////
+           //checks that the taxi doesnt go into the river, empty spcae and doesnt overlap another taxi
+
             // Creating a new Taxi with the existing data and random generated coords
             Taxi generatedTaxi = new Taxi(
                     csvTaxi.getType(),
@@ -58,7 +61,7 @@ public class Taxi {
                     csvTaxi.getRating(),
                     csvTaxi.getNoOfTrips()
             );
-            generatedTaxi.setPointX(x);
+            generatedTaxi.setPointX(x); //sets coords for generated taxi
             generatedTaxi.setPointY(y);
 
             // Add the generated Taxi to the list

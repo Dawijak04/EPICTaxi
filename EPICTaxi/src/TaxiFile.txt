@@ -13,4 +13,4 @@ Regular,172-KE-469,Kia,Sorento,Charlie,3.8,132
 Regular,201-TN-263,Nissan,Quashqai,James,2.914,151
 WheelchairAccesible,182-KY-858,Renault,Kangoo,Ryan,4.199,184
 Regular,212-WX-384,Ford,Mondeo,Brian,3.109,203
-Premium,211-T-251,Porsche,Panamera,Alisia,4.307,45
+Premium,211-T-251,Porsche,Panamera,Alisia,4.279,46
