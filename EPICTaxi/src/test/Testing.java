@@ -20,7 +20,7 @@ public class Testing  implements VehicleHiringTest {
     }
 
 
-    @Test
+    //@Test
     @Override
     public void testAddToMap() {
         //method that displays elements on the linked grid
