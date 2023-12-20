@@ -81,7 +81,6 @@ public class GridStateMange {
     public void narrowRangeAndDisplay() {
         DataList<Taxi> visibleTaxis = displayGridWithPersonAndTaxis();
         if (!visibleTaxis.isEmpty()) {
-            System.out.println("No taxis available in the narrowed range.");
             for (int i = 0; i < visibleTaxis.size(); i++) {
                 Taxi taxi = visibleTaxis.get(i);
                 System.out.println("Taxi " + i + ": " +" Driver " + taxi.getDriverName() + " in the " + taxi.getMake());

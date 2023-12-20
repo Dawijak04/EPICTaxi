@@ -1,8 +1,6 @@
 
 package org.example;
 
-import java.util.*;
-
 
 public class LinkedGrid {
     private Node first;

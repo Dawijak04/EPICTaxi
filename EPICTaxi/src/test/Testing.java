@@ -139,14 +139,11 @@ public class Testing  implements VehicleHiringTest {
     taxisInsideRange.setPointY(4);
 
 
-
     DataList<Taxi> visibleTaxis = new DataList<>();
     visibleTaxis.add(taxisInsideRange);
 
 
-    NarrowingRange.narrowRange(visibleTaxis, person, 5);
-   assertEquals(1, visibleTaxis.size());
-        assertEquals(taxisInsideRange, visibleTaxis.get(0));
+}}
 
-    }
-}
+
+

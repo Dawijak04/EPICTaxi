@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CSVFileReading {
-    static String csvPath = "EPICTaxi//src//TaxiFile.txt";
+    static String csvPath = "/Users/alisiakazimierek/MyRepos/EPICTaxi/EPICTaxi/src/TaxiFile.txt";
 
     private static DataList<Taxi> taxiList = new DataList();
 
