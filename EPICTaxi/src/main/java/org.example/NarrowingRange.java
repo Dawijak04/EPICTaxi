@@ -27,7 +27,7 @@ public class NarrowingRange {
 
 
 
-    private static double InNarrowRange(Person person, Taxi taxi, int maxDistance){ // this bascially gives us d = sqrt{(x_2 - x_1)^2 + (y_2-y_1)^2}
+    public static double InNarrowRange(Person person, Taxi taxi, int maxDistance){ // this bascially gives us d = sqrt{(x_2 - x_1)^2 + (y_2-y_1)^2}
         int DistanceX = person.getLocX() - taxi.getPointX();
         int DistanceY = person.getLocY() - taxi.getPointY();
 

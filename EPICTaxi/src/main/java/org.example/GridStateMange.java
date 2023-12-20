@@ -140,7 +140,7 @@ public class GridStateMange {
     }
 
     public void displayOnlySelectedTaxi() {
-     
+
         for (int y = 0; y < linkedGrid.getSize(); y++) {
             for (int x = 0; x < linkedGrid.getSize(); x++) {
                 Taxi originalTaxi = getTaxiAtPosition(x, y);
