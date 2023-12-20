@@ -108,13 +108,12 @@ public class GridStateMange {
             }
 
             displayGridWithPersonAndSelectedTaxi(visibleTaxis.get(selectedTaxiIndex));
-            UserInterface.setAssignedTaxi((visibleTaxis.get(selectedTaxiIndex)));//////////////////////test
+            UserInterface.setAssignedTaxi((visibleTaxis.get(selectedTaxiIndex)));
         } else {
             System.out.println("No taxis available in the narrowed range.");
         }
     }
     private void displayGridWithPersonAndSelectedTaxi(Taxi selectedTaxi) {
-        //Person person = linkedGrid.getPerson();///////////////////////////////////
         Type selectedType = Person.getType();
 
         for (int y = 0; y < linkedGrid.getSize(); y++) {
@@ -141,7 +140,7 @@ public class GridStateMange {
     }
 
     public void displayOnlySelectedTaxi() {
-        //Person person = linkedGrid.getPerson();
+     
         for (int y = 0; y < linkedGrid.getSize(); y++) {
             for (int x = 0; x < linkedGrid.getSize(); x++) {
                 Taxi originalTaxi = getTaxiAtPosition(x, y);
