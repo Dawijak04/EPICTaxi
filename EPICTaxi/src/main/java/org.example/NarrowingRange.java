@@ -15,12 +15,16 @@ public class NarrowingRange {
     }
 
     public static void narrowRange(DataList<Taxi> visibleTaxis, Person person, int distance){
-        visibleTaxis = new DataList<>();
-        for(int i = 0; i < visibleTaxis.size(); i++){
+        // Create a new list to store taxis that meet the distance criteria
+        DataList<Taxi>narrowedTaxis = new DataList<>();
+        for(int i = 0; i < visibleTaxis.size(); i++){ // Create a new list to store taxis that meet the distance criteria
             Taxi taxi = visibleTaxis.get(i);
             if(InNarrowRange(person, taxi , 5) <= distance){
-                visibleTaxis.add(taxi);
+                narrowedTaxis.add(taxi);// Add the taxi to the narrowedTaxis list
             }
+        }
+        for (int i = 0; i < narrowedTaxis.size(); i++) {
+            visibleTaxis.add(narrowedTaxis.get(i));
         }
 
     }
