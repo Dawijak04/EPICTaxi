@@ -1,10 +1,6 @@
 
 package org.example;
 import java.util.Random;
-import java.util.Scanner;
-
-
-import java.util.Random;
 
 
 public class Person {
@@ -13,10 +9,6 @@ public class Person {
     private static int category = 4;
     private static double rating = 6;
 
-
-
-
-    //private static Taxi assignedTaxi ;
     private static String assignedTaxiReg;
 
     private static int originalX;
@@ -29,14 +21,14 @@ public class Person {
 
     private static int locY;
 
-    public Person(int gridDimension) {
-        Random rand = new Random();
+    public Person(int gridDimension) { //constructor
+        Random rand = new Random(); //random
 
         do {
-            locX = rand.nextInt(gridDimension);
-            locY = rand.nextInt(gridDimension);
+            locX = rand.nextInt(gridDimension); //randomly assigns x coordinate within dimensions of grid
+            locY = rand.nextInt(gridDimension); //randomly assigns y coordinate within dimensions of grid
 
-        }while(LinkedGrid.isRiver(locX, locY) || LinkedGrid.isSpaceEmpty(locX, locY));
+        }while(LinkedGrid.isRiver(locX, locY) || LinkedGrid.isSpaceEmpty(locX, locY)); //repeats if coordinates are in river or on grass
 
 
     }
@@ -49,14 +41,6 @@ public class Person {
         assignedTaxiReg = reg;
     }
 
-    //public static Taxi getAssignedTaxi() {
-     //   return assignedTaxi;
-   // }
-
-    //public static void setAssignedTaxi(Taxi assignedTaxi) {
-     //   Person.assignedTaxi = assignedTaxi;
-    //}
-
 
     public static Type getType() {
         return type;
@@ -66,9 +50,6 @@ public class Person {
     public static void setType(Type t) {
         type = t;
     }
-
-
-
 
 
     public static int getNumberPassengers() {
@@ -96,8 +77,6 @@ public class Person {
         rating = r;
     }
 
-
-
     public static int getOriginalX() {
         return originalX;
     }
@@ -112,8 +91,6 @@ public class Person {
     public void setOriginalY(int Y) {
         originalY = Y;
     }
-
-
 
     public static int getLocX() {
         return locX;
